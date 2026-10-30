@@ -1,0 +1,11 @@
+{
+  "appId": "app.hitbonenut.meditation",
+  "appName": "התבוננות",
+  "webDir": "www",
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_icon",
+      "iconColor": "#2D7048"
+    }
+  }
+}
