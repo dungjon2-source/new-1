@@ -1,0 +1,59 @@
+name: Build APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore folders
+        run: |
+          shopt -s nullglob
+          for f in *__*; do
+            p="${f//__//}"
+            mkdir -p "$(dirname "$p")"
+            mv "$f" "$p"
+          done
+          ls -R www scripts resources | head -60
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Install packages
+        run: npm install --no-audit --no-fund
+
+      - name: Copy fonts into the app
+        run: node scripts/prepare.js fonts
+
+      - name: Create the Android project
+        run: npx cap add android
+
+      - name: Icon, splash and permissions
+        run: node scripts/prepare.js brand
+
+      - name: Sync the web files
+        run: npx cap sync android
+
+      - name: Build the APK
+        working-directory: android
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload the APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: hitbonenut-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
