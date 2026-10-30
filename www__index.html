@@ -1,0 +1,1818 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<style>
+/* base reset (the web version gets this from its host page) */
+:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; font: 14px system-ui, sans-serif; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+<link rel="stylesheet" href="fonts/fonts.css">
+<title>התבוננות</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Heebo:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@400;500&display=swap">
+<style>
+/* Layout: one calm column, a floating bottom navigation, a photo hero card per tab.
+   Colour: warm cream ground, deep forest green for actions and selected states, soft gold for cautions.
+   Type: Frank Ruhl Libre (serif) for headings, Heebo for text.
+   Shape: large rounded cards, pill buttons, one thin outline plus a soft shadow. */
+:root {
+  --bg: #f3eadb;
+  --bg-end: #eadfcb;
+  --surface: #fbf6ec;
+  --fg: #2d261c;
+  --muted: #6b6152;
+  --line: #e0d3bb;
+  --accent: #8a6d4b;
+  --accent-fg: #fffaf0;
+  --sel-bg: #8a6d4b;
+  --sel-fg: #fffaf0;
+  --sel-muted: rgba(255, 250, 240, 0.82);
+  --orb1: #c9a97c;
+  --orb2: #f0e2c8;
+  --ember: #9a7b3a;
+  --shadow: 0 8px 24px rgba(70, 52, 30, 0.10);
+  --font-display: "Frank Ruhl Libre", "Heebo", Georgia, serif;
+  --font-body: "Heebo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a150f;
+    --bg-end: #1a150f;
+    --surface: #241d15;
+    --fg: #f0e7d6;
+    --muted: #b3a68f;
+    --line: #3a3023;
+    --accent: #dcc7a1;
+    --accent-fg: #2a2016;
+    --sel-bg: #6e5638;
+    --sel-fg: #fbf4e6;
+    --sel-muted: rgba(251, 244, 230, 0.8);
+    --orb1: #a88a5c;
+    --orb2: #4a3b28;
+    --ember: #dcc27a;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1a150f;
+  --bg-end: #1a150f;
+  --surface: #241d15;
+  --fg: #f0e7d6;
+  --muted: #b3a68f;
+  --line: #3a3023;
+  --accent: #dcc7a1;
+  --accent-fg: #2a2016;
+  --sel-bg: #6e5638;
+  --sel-fg: #fbf4e6;
+  --sel-muted: rgba(251, 244, 230, 0.8);
+  --orb1: #a88a5c;
+  --orb2: #4a3b28;
+  --ember: #dcc27a;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: linear-gradient(180deg, var(--bg), var(--bg-end)) fixed;
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  padding-block: 22px 120px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 480px; margin: 0 auto; min-width: 0; }
+h1, h2 { font-family: var(--font-display); font-weight: 500; text-wrap: balance; margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.06em; color: var(--muted); }
+h2 { font-size: 20px; margin-bottom: 12px; }
+section { margin-bottom: 26px; }
+.card, .practice, .remind, .lesson, .japa, .mcard, .pintro, .pcard, .mnow, .mucard {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow);
+}
+
+/* Home */
+.top { display: flex; flex-direction: column; gap: 2px; margin-bottom: 18px; }
+.top h1 { font-size: 38px; line-height: 1.1; }
+.top-sub { margin: 2px 0 0; color: var(--muted); }
+
+/* Hero card */
+.hero {
+  position: relative; overflow: hidden; border-radius: 28px; min-height: 150px; margin-bottom: 22px;
+  display: flex; align-items: center; padding: 20px 22px; background: #efe5d2; box-shadow: var(--shadow); isolation: isolate;
+}
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -2; filter: sepia(0.85) saturate(0.9) hue-rotate(-8deg); background: var(--hero-img) center / cover; transform: var(--hero-flip, none); }
+.hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to left, color-mix(in srgb, var(--surface) 92%, transparent) 25%, transparent 88%); }
+.hero[data-hero="practice"] { --hero-img: url(img/bamboo-1.jpg); --hero-flip: scaleX(-1); min-height: 210px; }
+.hero[data-hero="prana"] { --hero-img: url(img/bamboo-4.jpg); }
+.hero[data-hero="study"] { --hero-img: url(img/bamboo-2.jpg); }
+.hero[data-hero="mantras"] { --hero-img: url(img/bamboo-3.jpg); }
+.hero[data-hero="music"] { --hero-img: url(img/bamboo-5.jpg); --hero-flip: scaleX(-1); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero::before { filter: sepia(0.85) saturate(0.9) hue-rotate(-8deg) brightness(0.55); } }
+:root[data-theme="dark"] .hero::before { filter: sepia(0.85) saturate(0.9) hue-rotate(-8deg) brightness(0.55); }
+.hero-in { max-width: 62%; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.hero h2 { font-size: 28px; line-height: 1.15; margin: 0; white-space: pre-line; }
+.hero p { margin: 0; font-size: 13px; color: var(--muted); }
+.hero-btn { background: var(--accent); color: var(--accent-fg); border: 0; border-radius: 999px; padding: 10px 20px; font-weight: 700; margin-top: 4px; }
+
+/* Choices */
+.practices { display: flex; flex-direction: column; gap: 10px; }
+.practice {
+  display: grid; grid-template-columns: 22px 1fr auto; align-items: center; gap: 12px;
+  text-align: start; padding: 14px 16px; width: 100%;
+}
+.practice .radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--line); display: grid; place-items: center; }
+.practice .name { font-weight: 700; display: block; }
+.practice .desc { font-size: 13px; color: var(--muted); display: block; min-width: 0; }
+.practice .tag { font-size: 12px; color: var(--muted); direction: ltr; font-variant-numeric: tabular-nums; border: 1px solid var(--line); border-radius: 999px; padding: 1px 10px; white-space: nowrap; }
+.practice[aria-checked="true"] { background: var(--sel-bg); border-color: var(--sel-bg); color: var(--sel-fg); }
+.practice[aria-checked="true"] .desc, .practice[aria-checked="true"] .tag { color: var(--sel-muted); }
+.practice[aria-checked="true"] .tag { border-color: var(--sel-muted); }
+.practice[aria-checked="true"] .radio { border-color: var(--sel-fg); }
+.practice[aria-checked="true"] .radio::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--sel-fg); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; min-width: 64px; font-variant-numeric: tabular-nums; }
+.chip[aria-checked="true"] { background: var(--sel-bg); border-color: var(--sel-bg); color: var(--sel-fg); font-weight: 700; }
+.start {
+  width: 100%; background: var(--accent); color: var(--accent-fg); border: 0; border-radius: 20px;
+  padding: 16px; font-size: 16px; font-weight: 700;
+}
+.note { font-size: 12px; color: var(--muted); text-align: center; margin: 12px 0 0; }
+.ghost { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; font-size: 13px; }
+.ghost:disabled { opacity: 0.6; cursor: default; }
+
+/* Floating bottom navigation */
+.tabs {
+  position: fixed; z-index: 20; left: 50%; transform: translateX(-50%);
+  bottom: max(12px, env(safe-area-inset-bottom, 0px));
+  width: min(456px, calc(100% - 24px)); display: flex; gap: 2px; padding: 8px 6px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 30px; box-shadow: 0 12px 32px rgba(70, 52, 30, 0.18);
+}
+.tab {
+  flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 3px;
+  background: transparent; border: 0; border-radius: 22px; padding: 7px 0 6px; font-size: 11px; line-height: 1.2; color: var(--muted); font-weight: 500;
+}
+.tab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.tab .glyph { height: 22px; display: grid; place-items: center; font-family: "Noto Sans Devanagari", "Nirmala UI", var(--font-body); font-size: 19px; line-height: 1; }
+.tab span:last-child { white-space: nowrap; }
+.tab[aria-selected="true"] { color: var(--accent); font-weight: 700; background: color-mix(in srgb, var(--accent) 11%, transparent); }
+
+/* Reminder, banner */
+.remind { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 12px 16px; }
+.switch { display: flex; align-items: center; gap: 10px; }
+.switch input { width: 22px; height: 22px; accent-color: var(--accent); }
+#r-time { font: inherit; color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 6px 16px; direction: ltr; }
+.remind + .note { text-align: start; }
+.banner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; background: var(--sel-bg); color: var(--sel-fg); border-radius: 22px; padding: 12px 16px; margin-bottom: 16px; font-weight: 700; }
+.banner-actions { display: flex; gap: 8px; }
+.banner button { background: transparent; color: var(--sel-fg); border: 1px solid var(--sel-fg); border-radius: 999px; padding: 6px 14px; font-weight: 500; }
+.banner button:focus-visible { outline-color: var(--sel-fg); }
+
+/* Session */
+.session { position: relative; min-height: 86vh; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
+.session::before {
+  content: ""; position: fixed; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 62%, transparent), color-mix(in srgb, var(--bg-end) 88%, transparent)), url(img/bamboo-1.jpg) center / cover;
+}
+.bar { display: flex; justify-content: space-between; align-items: center; }
+.stage { display: grid; place-items: center; gap: 22px; }
+.orbbox { position: relative; width: min(76vw, 300px); aspect-ratio: 1; max-width: 100%; display: grid; place-items: center; }
+.ring { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring circle { fill: none; stroke-width: 2; }
+.ring-bg { stroke: var(--line); }
+.ring-fg { stroke: var(--accent); stroke-linecap: round; stroke-dasharray: 295.31; stroke-dashoffset: 295.31; }
+.orb {
+  width: 80%; height: 80%; border-radius: 50%; transform: scale(0.55); will-change: transform;
+  background: radial-gradient(circle at 38% 34%, var(--orb1), var(--orb2) 74%);
+  box-shadow: 0 0 60px color-mix(in srgb, var(--orb1) 40%, transparent);
+}
+.phase { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; pointer-events: none; }
+.phase .word { font-family: var(--font-display); font-weight: 500; font-size: 24px; color: var(--fg); }
+.phase .count { font-size: 16px; color: var(--fg); font-variant-numeric: tabular-nums; opacity: 0.8; }
+.cue { min-height: 3.2em; text-align: center; font-size: 16px; max-width: 30ch; margin: 0 auto; transition: opacity 0.8s; text-wrap: balance; }
+.foot { display: flex; flex-direction: column; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 16px; box-shadow: var(--shadow); }
+.time { font-size: 34px; font-weight: 300; direction: ltr; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+.progress { display: none; }
+.pause { width: 100%; background: var(--accent); color: var(--accent-fg); border: 0; border-radius: 20px; padding: 14px 28px; font-weight: 700; }
+
+/* Done */
+.done { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 14px; }
+.done h1 { font-size: 34px; }
+.done p { margin: 0; color: var(--muted); max-width: 28ch; }
+.done .start { max-width: 320px; margin-top: 12px; }
+
+/* Daily study */
+.lesson { padding: 20px; display: flex; flex-direction: column; gap: 12px; margin: 0 0 14px; }
+.lesson .sk { font-family: var(--font-display); font-weight: 500; font-size: 34px; line-height: 1.1; color: var(--accent); }
+.lesson .tr { display: block; direction: ltr; text-align: right; font-size: 12px; color: var(--muted); }
+.lesson h2 { font-size: 24px; margin: 0; }
+.lesson p { margin: 0; max-width: 62ch; }
+.lesson .src { font-size: 12px; color: var(--muted); }
+.ask { border-top: 1px solid var(--line); padding-top: 12px; }
+.ask b { display: block; font-size: 12px; letter-spacing: 0.06em; color: var(--muted); font-weight: 500; }
+.ask p { font-family: var(--font-display); font-size: 18px; margin-top: 4px; }
+.actions { display: flex; flex-direction: column; gap: 10px; }
+.nav { display: flex; gap: 8px; }
+.nav .ghost { flex: 1; }
+.start.studied { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+
+/* Mantras */
+.japa { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; padding: 20px; margin-bottom: 22px; }
+.dev, .mdev { font-family: "Noto Sans Devanagari", "Nirmala UI", var(--font-body); direction: ltr; }
+.japa .dev { font-size: 23px; line-height: 1.5; }
+.japa .tr { direction: ltr; font-size: 12px; color: var(--muted); }
+.tap { --p: 0; width: 190px; height: 190px; max-width: 100%; border-radius: 50%; border: 0; padding: 9px; background: conic-gradient(var(--accent) calc(var(--p) * 1%), var(--line) 0); }
+.tap span { width: 100%; height: 100%; border-radius: 50%; background: var(--surface); display: grid; place-content: center; text-align: center; }
+.tap:active span { background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }
+.tap b { font-family: var(--font-display); font-weight: 500; font-size: 49px; line-height: 1; font-variant-numeric: tabular-nums; }
+.tap small { color: var(--muted); font-size: 12px; }
+.japa-meta { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: center; font-size: 12px; color: var(--muted); }
+.mlist { display: flex; flex-direction: column; gap: 10px; }
+.mcard { display: flex; flex-direction: column; gap: 4px; text-align: start; padding: 14px 16px; width: 100%; }
+.mcard[aria-pressed="true"] { background: var(--sel-bg); border-color: var(--sel-bg); color: var(--sel-fg); }
+.mcard[aria-pressed="true"] .mtr, .mcard[aria-pressed="true"] .muse { color: var(--sel-muted); }
+.mname { font-weight: 700; font-size: 15px; }
+.mdev { font-size: 17px; text-align: right; line-height: 1.6; }
+.mtr { direction: ltr; text-align: right; font-size: 12px; color: var(--muted); }
+.mmean { font-size: 13px; }
+.muse { font-size: 12px; color: var(--muted); }
+
+/* Pranayama */
+.pintro { padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+.pintro p { margin: 0; }
+.pdev { display: block; font-family: "Noto Sans Devanagari", "Nirmala UI", var(--font-body); direction: ltr; text-align: right; color: var(--accent); line-height: 1.4; }
+.pintro .pdev { font-size: 30px; }
+.pwarn { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px; }
+.plist { display: flex; flex-direction: column; gap: 10px; }
+.pcard { overflow: hidden; }
+.pcard.open { border-color: var(--accent); }
+.phead { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; width: 100%; background: transparent; border: 0; padding: 14px 16px; text-align: start; }
+.pmain { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.pname { font-weight: 700; }
+.phead .pdev { font-size: 16px; }
+.ptr { display: block; font-size: 12px; color: var(--muted); direction: ltr; text-align: right; }
+.pdesc { font-size: 13px; color: var(--muted); }
+.pmeta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+.plevel { font-size: 12px; color: var(--sel-fg); background: var(--sel-bg); border-radius: 999px; padding: 1px 10px; white-space: nowrap; }
+.ptag { font-size: 12px; color: var(--muted); direction: ltr; font-variant-numeric: tabular-nums; border: 1px solid var(--line); border-radius: 999px; padding: 1px 10px; white-space: nowrap; }
+.pbody { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 10px; }
+.pbody h3 { font-size: 12px; letter-spacing: 0.06em; color: var(--muted); font-weight: 500; margin: 6px 0 0; }
+.pbody ol { margin: 0; padding-inline-start: 22px; display: flex; flex-direction: column; gap: 6px; }
+.pbody p { margin: 0; }
+.pcaution { font-size: 13px; border-inline-start: 3px solid var(--ember); padding-inline-start: 10px; }
+.pbody .start { margin-top: 6px; }
+
+/* Music library */
+.mnow { padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+.mnow-title { font-size: 20px; font-weight: 700; line-height: 1.3; }
+.mnow-sub { font-size: 13px; color: var(--muted); }
+.mnow-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.vol { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--muted); margin-top: 4px; }
+.vol input { flex: 1; min-width: 0; accent-color: var(--accent); }
+#mu-sleep .chip { min-width: 0; padding: 8px 13px; }
+.mgroup { font-size: 18px; margin: 22px 0 10px; }
+.mulist { display: flex; flex-direction: column; gap: 10px; }
+.mucard { display: flex; align-items: center; gap: 12px; width: 100%; text-align: start; padding: 12px 16px; }
+.mucard[aria-pressed="true"] { background: var(--sel-bg); border-color: var(--sel-bg); color: var(--sel-fg); }
+.mucard[aria-pressed="true"] .mudesc { color: var(--sel-muted); }
+.muplay { flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line); color: var(--accent); }
+.mucard[aria-pressed="true"] .muplay { background: var(--sel-fg); border-color: var(--sel-fg); color: var(--sel-bg); }
+.muplay svg { width: 14px; height: 14px; fill: currentColor; }
+.mumain { display: flex; flex-direction: column; min-width: 0; }
+.muname { font-weight: 700; }
+.mudesc { font-size: 13px; color: var(--muted); }
+/* Music player */
+#mu-player { display: flex; flex-direction: column; gap: 14px; }
+.mp-back { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; }
+.mp-back svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.mp-art { position: relative; width: min(100%, 330px); aspect-ratio: 1; margin: 2px auto 0; border-radius: 32px; overflow: hidden; box-shadow: var(--shadow); background: var(--art) center / cover; --sepia: 1; isolation: isolate; }
+.mp-art { filter: sepia(0.85) saturate(0.9) hue-rotate(-8deg); }
+.mp-art::after { content: ""; position: absolute; inset: 24%; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, 0.85); background: rgba(255, 255, 255, 0.22); animation: mpPulse 4.5s ease-in-out infinite; }
+.mp-art.paused::after { animation-play-state: paused; }
+@keyframes mpPulse { 0%, 100% { transform: scale(0.9); } 50% { transform: scale(1.05); } }
+.mp-title { font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.2; text-align: center; margin-top: 6px; }
+.mp-sub { text-align: center; color: var(--muted); font-size: 13px; margin-top: -8px; }
+.mp-seek { display: flex; align-items: center; gap: 10px; direction: ltr; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.mp-seek input { flex: 1; min-width: 0; accent-color: var(--accent); }
+.mp-ctl { display: flex; align-items: center; justify-content: center; gap: 22px; direction: ltr; }
+.mp-ctl button { background: transparent; border: 0; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; color: var(--fg); }
+.mp-ctl svg { width: 22px; height: 22px; fill: currentColor; }
+.mp-ctl .mp-play { width: 68px; height: 68px; background: var(--accent); color: var(--accent-fg); box-shadow: var(--shadow); }
+.mp-ctl .mp-play svg { width: 26px; height: 26px; }
+.mp-extra { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 14px 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px; }
+.mp-extra h2 { font-size: 16px; margin: 0; }
+.mp-extra .note { margin: 0; text-align: start; }
+#mp-sleep .chip { min-width: 0; padding: 8px 13px; }
+@media (prefers-reduced-motion: reduce) { .cue { transition: none; } .mp-art::after { animation: none; } }
+</style>
+</head>
+<body>
+
+<main class="wrap" dir="rtl" lang="he">
+
+  <div id="home">
+    <header class="top">
+      <span class="eyebrow" id="dateline"></span>
+      <h1 id="greeting">שלום</h1>
+      <p class="top-sub">רגע של שקט, יום בהיר יותר.</p>
+    </header>
+
+    <div class="banner" id="banner" role="alert" hidden>
+      <span>הגיע הזמן לתרגל.</span>
+      <span class="banner-actions"><button id="b-go" type="button">להתחיל</button><button id="b-x" type="button">אחר כך</button></span>
+    </div>
+
+    <div class="hero" id="hero" data-hero="practice">
+      <div class="hero-in">
+        <h2 id="hero-t"></h2>
+        <p id="hero-p"></p>
+        <button class="hero-btn" id="hero-go" type="button">להתחיל</button>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="חלקי האפליקציה">
+      <button class="tab" role="tab" id="t-practice" aria-selected="true" aria-controls="tab-practice" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z"/><path d="M5 19c3-4 6-7 10-9"/></svg><span>תרגול</span></button>
+      <button class="tab" role="tab" id="t-prana" aria-selected="false" aria-controls="tab-prana" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h11a3 3 0 1 0-3-3"/><path d="M3 12h16a3 3 0 1 1-3 3"/><path d="M3 16h7"/></svg><span>פראנאיאמה</span></button>
+      <button class="tab" role="tab" id="t-study" aria-selected="false" aria-controls="tab-study" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13C17 4 14 4.5 12 6z"/><path d="M12 6v13"/></svg><span>לימוד</span></button>
+      <button class="tab" role="tab" id="t-mantras" aria-selected="false" aria-controls="tab-mantras" type="button"><span class="glyph" aria-hidden="true">ॐ</span><span>מנטרות</span></button>
+      <button class="tab" role="tab" id="t-music" aria-selected="false" aria-controls="tab-music" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="7" cy="18" r="2.5"/><circle cx="17" cy="16" r="2.5"/></svg><span>מוזיקה</span></button>
+    </div>
+
+    <div id="tab-practice" role="tabpanel" aria-labelledby="t-practice">
+    <section>
+      <h2>בחרו תרגול</h2>
+      <div class="practices" id="practices" role="radiogroup" aria-label="סוג תרגול"></div>
+    </section>
+
+    <section>
+      <h2>כמה זמן?</h2>
+      <div class="chips" id="durations" role="radiogroup" aria-label="משך בדקות"></div>
+    </section>
+
+    <section>
+      <h2>צליל רקע</h2>
+      <div class="chips" id="sounds" role="radiogroup" aria-label="צליל רקע"></div>
+    </section>
+
+    <section>
+      <h2>תזכורת יומית</h2>
+      <div class="remind">
+        <label class="switch"><input type="checkbox" id="r-on"><span>הפעלת תזכורת</span></label>
+        <input type="time" id="r-time" value="08:00" aria-label="שעת התזכורת">
+      </div>
+      <p class="note" id="r-note"></p>
+    </section>
+
+    <button class="start" id="start" type="button">התחלה</button>
+    <p class="note">הצליל מתחיל רק אחרי לחיצה על התחלה. כדאי להנמיך את הווליום ולהתיישב בנוחות.</p>
+    </div>
+
+    <div id="tab-prana" role="tabpanel" aria-labelledby="t-prana" hidden>
+      <section class="pintro">
+        <span class="eyebrow">פראנאיאמה</span>
+        <span class="pdev" lang="sa">प्राणायाम</span>
+        <p>פראנה היא כוח החיים שמגיע עם הנשימה, ואיאמה היא הרחבה והכוונה. בפתנג׳לי יוגה סוטרה (2.49) התרגול מתואר כהפסקת תנועת השאיפה והנשיפה, והמסורת רואה בו הכנה להתבוננות. את הטכניקות המפורטות מתאר טקסט היוגה מימי הביניים, האת׳ה יוגה פרדיפיקה.</p>
+        <p class="pwarn">התחילו מהטכניקות הקלות. נשימות מהירות או עם החזקה מתאימות רק למי שבריא, ועדיף ללמוד אותן ממורה. אם מופיעה סחרחורת או אי נוחות, חזרו לנשימה רגילה. האפליקציה אינה תחליף לייעוץ רפואי.</p>
+      </section>
+
+      <section>
+        <h2>כמה זמן?</h2>
+        <div class="chips" id="p-durations" role="radiogroup" aria-label="משך בדקות"></div>
+      </section>
+
+      <section>
+        <h2>צליל רקע</h2>
+        <div class="chips" id="p-sounds" role="radiogroup" aria-label="צליל רקע"></div>
+      </section>
+
+      <section>
+        <h2>בחרו טכניקה</h2>
+        <div class="plist" id="prana-list"></div>
+      </section>
+      <p class="note">בכל טכניקה תופיע הנחיה על המסך, והצליל מתחיל רק אחרי לחיצה על התחלה.</p>
+    </div>
+
+    <div id="tab-study" role="tabpanel" aria-labelledby="t-study" hidden></div>
+    <div id="tab-mantras" role="tabpanel" aria-labelledby="t-mantras" hidden></div>
+    <div id="tab-music" role="tabpanel" aria-labelledby="t-music" hidden>
+      <div id="mu-library">
+      <section class="mnow" aria-live="polite">
+        <span class="eyebrow">מנגן עכשיו</span>
+        <div class="mnow-title" id="mu-title">לא מנגן</div>
+        <div class="mnow-sub" id="mu-sub"></div>
+        <div class="mnow-actions">
+          <button class="ghost" id="mu-open" type="button" hidden>פתיחת הנגן</button>
+          <button class="ghost" id="mu-stop" type="button" hidden>עצירה</button>
+          <button class="ghost" id="mu-bg" type="button" hidden></button>
+        </div>
+        <label class="vol"><span>עוצמה</span><input type="range" id="mu-vol" min="10" max="100" step="5" aria-label="עוצמת הקול"></label>
+      </section>
+      <section>
+        <h2>טיימר שינה</h2>
+        <div class="chips" id="mu-sleep" role="radiogroup" aria-label="כיבוי אוטומטי"></div>
+        <p class="note" id="mu-left"></p>
+      </section>
+      <div id="mu-list"></div>
+      </div>
+
+      <div id="mu-player" hidden>
+        <button class="ghost mp-back" id="mp-back" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>לספרייה</button>
+        <div class="mp-art" id="mp-art" aria-hidden="true"></div>
+        <div class="mp-title" id="mp-title"></div>
+        <div class="mp-sub" id="mp-sub"></div>
+        <div class="mp-seek"><span id="mp-cur">0:00</span><input type="range" id="mp-seek" min="0" max="1000" value="0" aria-label="מיקום בהקלטה"><span id="mp-dur">--:--</span></div>
+        <div class="mp-ctl">
+          <button id="mp-prev" type="button" aria-label="הקודם"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+          <button class="mp-play" id="mp-toggle" type="button" aria-label="השהיה"></button>
+          <button id="mp-next" type="button" aria-label="הבא"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
+        </div>
+        <div class="mp-extra">
+          <label class="vol"><span>עוצמה</span><input type="range" id="mp-vol" min="10" max="100" step="5" aria-label="עוצמת הקול"></label>
+          <h2>טיימר שינה</h2>
+          <div class="chips" id="mp-sleep" role="radiogroup" aria-label="כיבוי אוטומטי"></div>
+          <p class="note" id="mp-left"></p>
+          <div class="mnow-actions">
+            <button class="ghost" id="mp-bg" type="button"></button>
+            <button class="ghost" id="mp-stop" type="button">עצירה</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="session" class="session" hidden>
+    <div class="bar">
+      <button class="ghost" id="end" type="button">סיום</button>
+      <button class="ghost" id="mute" type="button" aria-pressed="false">צליל: פעיל</button>
+    </div>
+    <div class="stage">
+      <div class="orbbox">
+        <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><circle class="ring-bg" cx="50" cy="50" r="47"/><circle class="ring-fg" id="ring" cx="50" cy="50" r="47"/></svg>
+        <div class="orb" id="orb"></div>
+        <div class="phase" aria-live="off"><span class="word" id="word"></span><span class="count" id="count"></span></div>
+      </div>
+      <p class="cue" id="cue" aria-live="polite"></p>
+    </div>
+    <div class="foot">
+      <div class="time" id="time">05:00</div>
+      <div class="progress"><i id="bar"></i></div>
+      <button class="pause" id="pause" type="button">השהיה</button>
+    </div>
+  </div>
+
+  <div id="done" class="done" hidden>
+    <span class="eyebrow">התרגול הסתיים</span>
+    <h1>כל הכבוד</h1>
+    <p id="d-text"></p>
+    <button class="start" id="back" type="button">חזרה</button>
+  </div>
+
+</main>
+
+<script>
+(function () {
+  document.documentElement.lang = 'he';
+  document.documentElement.dir = 'rtl';
+
+  var PRACTICES = [
+    { id: 'box', name: 'נשימה מרובעת', desc: 'ארבע ספירות לכל שלב. מארגנת את הראש לפני משימה.', tag: '4·4·4·4',
+      pattern: [['שאיפה', 4, 'in'], ['החזקה', 4, 'hold'], ['נשיפה', 4, 'out'], ['החזקה', 4, 'hold']] },
+    { id: '478', name: 'נשימת 4-7-8', desc: 'נשיפה ארוכה שמאטה את הדופק. טובה לפני השינה.', tag: '4·7·8',
+      pattern: [['שאיפה', 4, 'in'], ['החזקה', 7, 'hold'], ['נשיפה', 8, 'out']] },
+    { id: 'calm', name: 'נשימה מאזנת', desc: 'חמש שניות פנימה, חמש שניות החוצה. קצב קבוע ורגוע.', tag: '5·5',
+      pattern: [['שאיפה', 5, 'in'], ['נשיפה', 5, 'out']] },
+    { id: 'om', name: 'מדיטציית אום', desc: 'שאיפה שקטה ואז אום בנשיפה, בקול או בלב. צליל עמוק מלווה את הנשיפה.', tag: 'ॐ',
+      pattern: [['שאיפה', 4, 'in'], ['אום', 8, 'out']], hum: 1,
+      cues: ['שבו בנוחות ועצמו את העיניים.',
+             'שאפו לאט דרך האף.',
+             'בנשיפה אמרו אום, בקול או בלב. הרגישו את הרטט בחזה.',
+             'אל תמהרו. תנו להברה להתארך עד סוף הנשיפה.',
+             'כשהמחשבות נודדות, חזרו להברה אום.',
+             'הרגישו את השקט שנשאר אחרי הצליל.',
+             'המשיכו באותו קצב, בלי מאמץ.',
+             'הניחו לאום להתמוסס אל תוך השקט.'] },
+    { id: 'scan', name: 'סריקת גוף', desc: 'תשומת לב עוברת לאט מהרגליים עד הראש.', tag: 'מונחה',
+      pattern: [['שאיפה', 5, 'in'], ['נשיפה', 6, 'out']],
+      cues: ['שבו או שכבו בנוחות, ועצמו את העיניים.',
+             'הרגישו את כפות הרגליים. אפשרו להן להישאר כבדות.',
+             'העבירו את תשומת הלב לשוקיים ולברכיים.',
+             'הרפו את הירכיים ואת האגן.',
+             'הרגישו את הבטן עולה ויורדת עם הנשימה.',
+             'שחררו את החזה, את הכתפיים ואת הזרועות.',
+             'הרפו את הצוואר, הלסת והלחיים.',
+             'הרגישו את כל הגוף יחד, נושם בשקט.'] },
+    { id: 'silent', name: 'ישיבה שקטה', desc: 'בלי הנחיה. רק טיימר ועיגול שפועם לאט.', tag: 'שקט',
+      pattern: [['', 8, 'in'], ['', 8, 'out']], plain: true }
+  ];
+  var PRANA = [
+    { id: 'dirga', prana: true, name: 'נשימה שלמה', dev: 'दीर्घ प्राणायाम', tr: 'Dīrgha prāṇāyāma', level: 'מתחילים', tag: '6·6',
+      desc: 'שאיפה בשלושה חלקים: בטן, צלעות, חזה. נקודת פתיחה לכל תרגול.',
+      steps: ['שבו זקוף. יד אחת על הבטן ויד אחת על החזה.', 'שאפו דרך האף. קודם הבטן מתרחבת.', 'המשיכו לשאוף: הצלעות נפתחות לצדדים, ולבסוף החזה העליון עולה.', 'נשפו לאט בסדר הפוך: חזה, צלעות, בטן.'],
+      benefits: 'מלמדת להשתמש בסרעפת ומאטה את הנשימה. מתאימה כחימום לשאר הטכניקות.',
+      caution: 'אין התוויות מיוחדות. אם מופיעה סחרחורת, חזרו לנשימה רגילה.',
+      pattern: [['שאיפה', 6, 'in'], ['נשיפה', 6, 'out']],
+      cues: ['שבו זקוף, והניחו יד על הבטן ויד על החזה.', 'שאפו, והרגישו את הבטן מתרחבת ראשונה.', 'אפשרו לצלעות להיפתח לצדדים.', 'בסוף השאיפה, החזה העליון עולה בעדינות.', 'נשפו לאט: חזה, צלעות, בטן.', 'אל תכריחו. נשימה מלאה אך רכה.', 'שחררו את הכתפיים והלסת.'] },
+    { id: 'ujjayi', prana: true, name: 'אוג׳איי', dev: 'उज्जायी', tr: 'Ujjāyī', level: 'מתחילים', tag: '5·7',
+      desc: 'נשימה עם צליל עדין בגרון, כמו גלי ים. מחדדת ריכוז.',
+      steps: ['כווצו מעט את הגרון, כמו מי שמכסה מראה בהבל פה, אבל כשהפה סגור.', 'שאפו דרך האף עם צליל רך כמו גל.', 'נשפו באותו צליל, ארוך יותר מהשאיפה.', 'שמרו על פנים, לסת וכתפיים רפויים.'],
+      benefits: 'הצליל נותן למחשבה משהו להיאחז בו, והנשימה מתארכת מעצמה. נפוצה מאוד בתרגול יוגה.',
+      caution: 'אם הגרון יבש או כואב, הפחיתו את הכיווץ. כשהצליל נעשה מאומץ, עצרו.',
+      pattern: [['שאיפה', 5, 'in'], ['נשיפה', 7, 'out']],
+      cues: ['כווצו קלות את הגרון, והשאירו את הפה סגור.', 'שאפו עם צליל של גל שמתקרב.', 'נשפו עם אותו צליל, והאריכו.', 'הקשיבו לצליל במקום למחשבות.', 'שמרו על הפנים רפויות.', 'אם הצליל נעשה חד, הרפו אותו.', 'המשיכו בקצב שוטף וקבוע.'] },
+    { id: 'nadi', prana: true, name: 'נאדי שודהנה', dev: 'नाडी शोधन', tr: 'Nāḍī śodhana', level: 'מתחילים', tag: '4·2·8',
+      desc: 'נשימה לסירוגין בין שני הנחיריים. מאזנת ומשקטת, נפוצה לפני מדיטציה.',
+      steps: ['הרימו את יד ימין: האצבעות המורה והאמצעית מקופלות, האגודל מעל הנחיר הימני והקמיצה מעל השמאלי.', 'סגרו את הימני ושאפו דרך השמאלי.', 'סגרו את שני הנחיריים והחזיקו קצר.', 'פתחו את הימני ונשפו דרכו לאט.', 'שאפו דרך הימני, החזיקו, ונשפו דרך השמאלי. זה סבב אחד.'],
+      benefits: 'במסורת היוגה היא “ניקוי הערוצים” (נאדי). רבים מדווחים על רוגע וקשב מחודד אחריה.',
+      caution: 'בלחץ דם גבוה, מחלות לב או הריון, בלי החזקה ובהתייעצות. אם האף סתום, נשמו בלי לסגור.',
+      pattern: [['שאיפה · שמאל', 4, 'in'], ['החזקה', 2, 'hold'], ['נשיפה · ימין', 8, 'out'], ['שאיפה · ימין', 4, 'in'], ['החזקה', 2, 'hold'], ['נשיפה · שמאל', 8, 'out']],
+      cues: ['הרימו יד ימין לצורת וישנו מודרה.', 'סגרו את הנחיר הימני ושאפו משמאל.', 'סגרו שניהם והחזיקו בקצרה.', 'נשפו מימין, לאט וברכות.', 'שאפו מימין, החזיקו ונשפו משמאל.', 'הנשימה שקטה ואינה מאומצת.', 'אם מתעייפת היד, הורידו אותה ונשמו רגיל.'] },
+    { id: 'bhramari', prana: true, name: 'בהרמרי', dev: 'भ्रामरी', tr: 'Bhrāmarī', level: 'מתחילים', tag: '4·10', hum: 1,
+      desc: 'נשימת הדבורה: זמזום ארוך בנשיפה. מרגיעה, מתאימה לסוף היום.',
+      steps: ['עצמו עיניים. שפתיים סגורות, השיניים מעט מופרדות.', 'שאפו דרך האף כארבע שניות.', 'נשפו עם זמזום נמוך ויציב, והרגישו את הרטט בראש ובפנים.', 'אפשר להניח את האגודלים על האוזניים ולהשאיר את האצבעות על המצח.'],
+      benefits: 'הנשיפה הארוכה והרטט משקיטים את הקשב, ולכן התרגול נוח אחרי יום עמוס.',
+      caution: 'עם כאב או דלקת באוזניים, אל תסגרו את האוזניים. אפשר פשוט לזמזם.',
+      pattern: [['שאיפה', 4, 'in'], ['זמזום', 10, 'out']],
+      cues: ['עצמו עיניים, שפתיים סגורות ושיניים רפויות.', 'שאפו דרך האף.', 'נשפו עם זמזום עמוק כמו דבורה.', 'הרגישו את הרטט בפנים ובראש.', 'כשהנשיפה נגמרת, הקשיבו לשקט.', 'שחררו את הכתפיים.', 'המשיכו בקצב נוח.'] },
+    { id: 'sitali', prana: true, name: 'שיטאלי', dev: 'शीतली', tr: 'Śītalī', level: 'בינוני', tag: '4·2·6',
+      desc: 'שאיפה דרך לשון מגולגלת. מצננת ומרגיעה.',
+      steps: ['הוציאו את הלשון מעט וגלגלו אותה לצינור. מי שלא מצליח: להצמיד שיניים ולשאוף בין השיניים (סיטקארי).', 'שאפו דרך הצינור, כמו דרך קשית.', 'החזירו את הלשון, סגרו את הפה והחזיקו בקצרה.', 'נשפו לאט דרך האף.'],
+      benefits: 'במסורת היא נחשבת מקררת, ומתאימה לימים חמים או לרגעים של חום פנימי ועצבנות.',
+      caution: 'לא באוויר קר או מזוהם, ולא בזמן הצטננות או שפעת.',
+      pattern: [['שאיפה', 4, 'in'], ['החזקה', 2, 'hold'], ['נשיפה', 6, 'out']],
+      cues: ['גלגלו את הלשון, או הצמידו שיניים.', 'שאפו אוויר קריר דרך הלשון.', 'החזיקו בקצרה.', 'נשפו לאט דרך האף.', 'הרגישו את הקרירות בפה ובגרון.', 'אל תכריחו את השאיפה.', 'המשיכו ברוגע.'] },
+    { id: 'surya', prana: true, name: 'סוריה בהדנה', dev: 'सूर्यभेदन', tr: 'Sūrya bhedana', level: 'בינוני', tag: '4·4·8',
+      desc: 'שאיפה בנחיר ימין ונשיפה בשמאל. מחממת ומעוררת.',
+      steps: ['הרימו את יד ימין בצורת וישנו מודרה.', 'סגרו את הנחיר השמאלי ושאפו דרך הימני.', 'סגרו את שניהם והחזיקו.', 'פתחו את השמאלי ונשפו דרכו לאט.'],
+      benefits: 'האת׳ה יוגה פרדיפיקה מונה אותה בין שמונה הנשימות עם החזקה (קומבהקה). המסורת מתארת אותה כמעוררת.',
+      caution: 'עלולה להעלות דופק ולחץ. לא בלחץ דם גבוה, מחלות לב, הריון או חרדה חזקה. לא כדאי לפני שינה.',
+      pattern: [['שאיפה · ימין', 4, 'in'], ['החזקה', 4, 'hold'], ['נשיפה · שמאל', 8, 'out']],
+      cues: ['הרימו את היד הימנית.', 'סגרו שמאל ושאפו מימין.', 'החזיקו בנוחות.', 'נשפו משמאל, לאט.', 'שימו לב לחום שעולה בגוף.', 'אם מתעורר מתח, קצרו את ההחזקה.', 'המשיכו בקצב קבוע.'] },
+    { id: 'kapala', prana: true, name: 'קאפאלבהאטי', dev: 'कपालभाति', tr: 'Kapālabhāti', level: 'מתקדם', tag: 'נשיפות חדות',
+      desc: 'נשיפות קצרות וחדות דרך האף, והשאיפה נעשית מעצמה. מעוררת וממריצה.',
+      steps: ['שבו זקוף ושאפו עמוק.', 'נשפו בחדות דרך האף בכיווץ מהיר של הבטן התחתונה.', 'אל תשאפו בכוח: השאיפה חוזרת מעצמה כשהבטן משתחררת.', 'המשיכו כ-20 שניות בקצב של כשתיים בשנייה, ואז נשימה חופשית.'],
+      benefits: 'בהאת׳ה יוגה פרדיפיקה מונה אותה בין טכניקות הניקוי. מעוררת וממריצה, ומתאימה לבוקר.',
+      caution: 'לא בהריון, בלחץ דם גבוה, במחלות לב או ריאה, בבקע, באפילפסיה ולא אחרי אכילה. סחרחורת: הפסיקו מיד. מומלץ ללמוד ממורה.',
+      pattern: [['נשיפות חדות', 20, 'pump', 1.5], ['שאיפה', 5, 'in'], ['נשיפה', 5, 'out']],
+      cues: ['שבו זקוף, והניחו יד על הבטן התחתונה.', 'נשפו בחדות, והבטן נכנסת פנימה.', 'השאיפה מגיעה מעצמה. אל תתאמצו.', 'הכתפיים והפנים נשארות רפויות.', 'בסוף הסבב, נשמו חופשי.', 'אם מופיעה סחרחורת, הפסיקו.', 'חזרו בעדינות על סבב נוסף.'] },
+    { id: 'bhastrika', prana: true, name: 'בהסטריקה', dev: 'भस्त्रिका', tr: 'Bhastrikā', level: 'מתקדם', tag: 'מפוח',
+      desc: 'נשימת המפוח: שאיפה ונשיפה חזקות ושוות, ואחריהן שאיפה עמוקה והחזקה.',
+      steps: ['שבו זקוף. הרחיבו ושחררו את הבטן בכל נשימה, כמו מפוח.', 'נשמו שאיפה ונשיפה חזקות, בקצב של כשנייה לנשימה, כ-10 נשימות.', 'שאפו עמוק, החזיקו בנוחות ונשפו לאט.', 'חזרו על סבב נוסף. התחילו בשני או שלושה סבבים בלבד.'],
+      benefits: 'האת׳ה יוגה פרדיפיקה מונה אותה בין שמונה הקומבהקות. המסורת מתארת אותה כמחממת ומעוררת מאוד.',
+      caution: 'לא בהריון, בלחץ דם גבוה, במחלות לב או ריאה, באפילפסיה ולא אחרי אכילה. סחרחורת: הפסיקו. מומלץ ללמוד ממורה.',
+      pattern: [['נשימות עוצמתיות', 10, 'pump', 1], ['שאיפה עמוקה', 4, 'in'], ['החזקה', 4, 'hold'], ['נשיפה', 6, 'out']],
+      cues: ['שבו זקוף, והניחו את הידיים על הברכיים.', 'נשמו חזק ושווה, פנימה והחוצה.', 'הבטן נעה כמו מפוח.', 'אחרי כל סבב, שאיפה עמוקה והחזקה נוחה.', 'נשפו לאט והרגישו את החום בגוף.', 'סחרחורת? חזרו לנשימה רגילה.', 'חזרו על סבב נוסף בעדינות.'] }
+  ];
+  PRACTICES = PRACTICES.concat(PRANA);
+  var pOpen = null;
+  var DURATIONS = [3, 5, 10, 15, 20];
+  var SOUNDS = [['off', 'ללא'], ['wind', 'רוח'], ['rain', 'גשם'], ['india', 'חליל במבוק'], ['yaman', 'סיטאר וטבלה'], ['bhairavi', 'סרנגי'], ['santoor', 'סנטור'], ['track1', 'Guided Meditation · Marlowe Music'], ['track2', 'Meditation Music · Verclub Music'], ['track4', 'Relaxing Flute Meditation · Dana Music'], ['track5', 'Meditation · Leberch'], ['track6', 'Lotus Secret Garden']];
+  var DAYS = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ש'];
+  var KEY = 'pinat-shaket-v1';
+
+  var state = { sessions: [], practice: 'box', dur: 5, sound: 'wind', study: {}, japa: 0, remind: { on: false, time: '08:00', last: '' } };
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (raw) { var p = JSON.parse(raw); if (p && typeof p === 'object') { for (var k in p) state[k] = p[k]; } }
+  } catch (e) {}
+  if (!Array.isArray(state.sessions)) state.sessions = [];
+  if (!state.study || typeof state.study !== 'object') state.study = {};
+  if (typeof state.japa !== 'number') state.japa = 0;
+  if (['off', 'wind', 'rain', 'india', 'yaman', 'bhairavi', 'santoor', 'track1', 'track2', 'track4', 'track5', 'track6'].indexOf(state.sound) < 0) state.sound = 'india';
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  function $(id) { return document.getElementById(id); }
+  function key(d) {
+    var m = d.getMonth() + 1, day = d.getDate();
+    return d.getFullYear() + '-' + (m < 10 ? '0' : '') + m + '-' + (day < 10 ? '0' : '') + day;
+  }
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  /* ---------- Home ---------- */
+  function greeting() {
+    var h = new Date().getHours();
+    if (h < 5) return 'לילה טוב';
+    if (h < 12) return 'בוקר טוב';
+    if (h < 17) return 'צהריים טובים';
+    if (h < 21) return 'ערב טוב';
+    return 'לילה טוב';
+  }
+  function radio(container, items, current, onPick, build) {
+    container.innerHTML = '';
+    items.forEach(function (it) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('role', 'radio');
+      b.setAttribute('aria-checked', String(it.id === current));
+      b.className = build.cls;
+      b.innerHTML = build.html(it);
+      b.addEventListener('click', function () { onPick(it.id); });
+      container.appendChild(b);
+    });
+  }
+  function renderChoices() {
+    radio($('practices'), PRACTICES.filter(function (p) { return !p.prana; }), state.practice, function (id) { state.practice = id; save(); renderChoices(); },
+      { cls: 'practice', html: function (p) {
+        return '<span class="radio"></span><span style="min-width:0"><span class="name">' + p.name + '</span><span class="desc">' + p.desc + '</span></span><span class="tag">' + p.tag + '</span>';
+      } });
+    radio($('durations'), DURATIONS.map(function (n) { return { id: n }; }), state.dur, function (n) { state.dur = n; save(); renderChoices(); },
+      { cls: 'chip', html: function (d) { return d.id + ' דק׳'; } });
+    radio($('sounds'), SOUNDS.map(function (s) { return { id: s[0], label: s[1] }; }), state.sound, function (s) { state.sound = s; save(); renderChoices(); },
+      { cls: 'chip', html: function (s) { return s.label; } });
+    renderPrana();
+  }
+  function renderPrana() {
+    radio($('p-durations'), DURATIONS.map(function (n) { return { id: n }; }), state.dur, function (n) { state.dur = n; save(); renderChoices(); },
+      { cls: 'chip', html: function (d) { return d.id + ' דק׳'; } });
+    radio($('p-sounds'), SOUNDS.map(function (s) { return { id: s[0], label: s[1] }; }), state.sound, function (s) { state.sound = s; save(); renderChoices(); },
+      { cls: 'chip', html: function (s) { return s.label; } });
+    $('prana-list').innerHTML = PRANA.map(function (x) {
+      var open = x.id === pOpen;
+      var h = '<article class="pcard' + (open ? ' open' : '') + '">' +
+        '<button type="button" class="phead" data-p="' + x.id + '" aria-expanded="' + open + '">' +
+          '<span class="pmain"><span class="pname">' + x.name + '</span><span class="pdev" lang="sa">' + x.dev + '</span><span class="ptr">' + x.tr + '</span><span class="pdesc">' + x.desc + '</span></span>' +
+          '<span class="pmeta"><span class="plevel">' + x.level + '</span><span class="ptag">' + x.tag + '</span></span>' +
+        '</button>';
+      if (open) {
+        h += '<div class="pbody">' +
+          '<h3>איך מתרגלים</h3><ol>' + x.steps.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ol>' +
+          '<h3>למה</h3><p>' + x.benefits + '</p>' +
+          '<p class="pcaution"><b>זהירות: </b>' + x.caution + '</p>' +
+          '<button class="start" type="button" data-start="' + x.id + '">התחלת תרגול · ' + state.dur + ' דק׳</button>' +
+        '</div>';
+      }
+      return h + '</article>';
+    }).join('');
+  }
+  function renderHome() {
+    $('greeting').textContent = greeting();
+    $('dateline').textContent = new Date().toLocaleDateString('he-IL', { weekday: 'long', day: 'numeric', month: 'long' });
+    renderChoices();
+  }
+
+  /* ---------- Audio ---------- */
+  var ctx = null, ambient = null, master = null, muted = false;
+  var vol = (typeof state.vol === 'number' && state.vol >= 0.1 && state.vol <= 1) ? state.vol : 1;
+  function ensureAudio() {
+    if (ctx) return;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      ctx = new AC();
+      master = ctx.createGain();
+      master.gain.value = vol;
+      master.connect(ctx.destination);
+    } catch (e) { ctx = null; }
+  }
+  function noiseBuffer(kind) {
+    var len = ctx.sampleRate * 3;
+    var buf = ctx.createBuffer(1, len, ctx.sampleRate);
+    var data = buf.getChannelData(0), last = 0;
+    for (var i = 0; i < len; i++) {
+      var w = Math.random() * 2 - 1;
+      if (kind === 'wind') { last = (last + 0.02 * w) / 1.02; data[i] = last * 3.5; }
+      else { data[i] = w * 0.5; }
+    }
+    return buf;
+  }
+  /* Four different classical Indian settings, each with its own instrument, raga, tempo and space:
+     flute: free-time alap over tanpura (Bhupali) | sitar: plucked phrases over a tabla keherwa (Yaman)
+     sarangi: bowed, sliding, mournful over a harmonium drone (Bhairavi) | santoor: shimmering hammered runs (Durga) */
+  var RAGAS = {
+    india: { style: 'flute', sa: 146.83, scale: [1, 9 / 8, 5 / 4, 3 / 2, 5 / 3, 2, 9 / 4, 5 / 2] },
+    yaman: { style: 'sitar', sa: 130.81, scale: [1, 9 / 8, 5 / 4, 45 / 32, 3 / 2, 27 / 16, 15 / 8, 2, 9 / 4, 5 / 2] },
+    bhairavi: { style: 'sarangi', sa: 123.47, scale: [1, 256 / 243, 32 / 27, 4 / 3, 3 / 2, 128 / 81, 16 / 9, 2] },
+    santoor: { style: 'santoor', sa: 164.81, scale: [1, 9 / 8, 4 / 3, 3 / 2, 5 / 3, 2, 9 / 4, 8 / 3, 3, 10 / 3] }
+  };
+  function startIndia(cfg) {
+    var Sa = cfg.sa, scale = cfg.scale, st = cfg.style, now = ctx.currentTime;
+    var stopped = false, timers = [], oscs = [];
+    function later(fn, ms) {
+      timers.push(setTimeout(function () { if (!stopped) fn(); }, ms));
+    }
+    function osc(type, f) {
+      var o = ctx.createOscillator();
+      o.type = type;
+      o.frequency.value = f;
+      oscs.push(o);
+      return o;
+    }
+    function rnd(a, b) { return a + Math.random() * (b - a); }
+
+    var bus = ctx.createGain();
+    bus.gain.value = 0;
+    bus.gain.linearRampToValueAtTime(0.7, now + 3);
+    bus.connect(master);
+    var melOut = ctx.createGain();
+    var warm = ctx.createBiquadFilter();
+    warm.type = 'lowpass';
+    warm.frequency.value = { flute: 2600, sitar: 5000, sarangi: 2200, santoor: 6000 }[st];
+    melOut.connect(warm); warm.connect(bus);
+    var fx = { flute: [0.55, 0.4, 0.5], sitar: [0.4, 0.3, 0.3], sarangi: [0.62, 0.45, 0.5], santoor: [0.36, 0.52, 0.75] }[st];
+    var echo = ctx.createDelay(1);
+    echo.delayTime.value = fx[0];
+    var damp = ctx.createBiquadFilter();
+    damp.type = 'lowpass';
+    damp.frequency.value = 2000;
+    var fb = ctx.createGain();
+    fb.gain.value = fx[1];
+    var wet = ctx.createGain();
+    wet.gain.value = fx[2];
+    warm.connect(echo); echo.connect(damp); damp.connect(fb); fb.connect(echo); damp.connect(wet); wet.connect(bus);
+
+    /* ----- drones ----- */
+    function tanpura(level, every) {
+      var strings = [0.75, 1, 1, 0.5], si = 0;
+      var out = ctx.createGain();
+      out.gain.value = level;
+      out.connect(bus);
+      function pluck() {
+        if (ctx.state === 'running') {
+          var t = ctx.currentTime, f = Sa * strings[si % 4];
+          si++;
+          var filt = ctx.createBiquadFilter();
+          filt.type = 'lowpass';
+          filt.frequency.setValueAtTime(2600, t);
+          filt.frequency.exponentialRampToValueAtTime(420, t + 3);
+          var g = ctx.createGain();
+          g.gain.setValueAtTime(0.0001, t);
+          g.gain.exponentialRampToValueAtTime(0.3, t + 0.03);
+          g.gain.exponentialRampToValueAtTime(0.0001, t + 5.5);
+          filt.connect(g); g.connect(out);
+          [1, 1.003].forEach(function (m) {
+            var o = ctx.createOscillator();
+            o.type = 'sawtooth';
+            o.frequency.value = f * m;
+            o.connect(filt);
+            o.start(t); o.stop(t + 5.7);
+          });
+        }
+        later(pluck, every);
+      }
+      pluck();
+    }
+    function pad(type, level, cutoff) {
+      var g = ctx.createGain();
+      g.gain.value = level;
+      var f = ctx.createBiquadFilter();
+      f.type = 'lowpass';
+      f.frequency.value = cutoff;
+      f.connect(g); g.connect(bus);
+      [[Sa, 1], [Sa * 1.002, 1], [Sa * 1.5, 0.6], [Sa * 0.5, 0.7]].forEach(function (p) {
+        var o = osc(type, p[0]), pg = ctx.createGain();
+        pg.gain.value = p[1];
+        o.connect(pg); pg.connect(f);
+        o.start();
+      });
+    }
+
+    /* ----- voices ----- */
+    var breathBuf = noiseBuffer('rain');
+    function bansuri(f, t, dur, vel, from) {
+      var end = t + dur + 0.6;
+      var env = ctx.createGain();
+      env.gain.setValueAtTime(0.0001, t);
+      env.gain.exponentialRampToValueAtTime(0.17 * vel, t + 0.16);
+      env.gain.linearRampToValueAtTime(0.13 * vel, t + Math.max(0.3, dur * 0.7));
+      env.gain.exponentialRampToValueAtTime(0.0001, end);
+      env.connect(melOut);
+      var lfo = ctx.createOscillator();
+      lfo.frequency.value = rnd(4.8, 5.6);
+      var depth = ctx.createGain();
+      depth.gain.setValueAtTime(0, t);
+      depth.gain.linearRampToValueAtTime(f * 0.007, t + 0.9);
+      lfo.connect(depth);
+      lfo.start(t); lfo.stop(end);
+      [[1, 1], [2, 0.2], [3, 0.07]].forEach(function (h) {
+        var o = ctx.createOscillator(), g = ctx.createGain(), d = ctx.createGain();
+        o.type = 'sine';
+        o.frequency.setValueAtTime((from || f) * h[0], t);
+        o.frequency.exponentialRampToValueAtTime(f * h[0], t + 0.2);
+        d.gain.value = h[0];
+        depth.connect(d); d.connect(o.frequency);
+        g.gain.value = h[1];
+        o.connect(g); g.connect(env);
+        o.start(t); o.stop(end);
+      });
+      var nz = ctx.createBufferSource();
+      nz.buffer = breathBuf;
+      nz.loop = true;
+      var bp = ctx.createBiquadFilter();
+      bp.type = 'bandpass';
+      bp.frequency.value = Math.min(f * 3, 4000);
+      bp.Q.value = 1.2;
+      var ng = ctx.createGain();
+      ng.gain.setValueAtTime(0.0001, t);
+      ng.gain.exponentialRampToValueAtTime(0.09 * vel, t + 0.05);
+      ng.gain.exponentialRampToValueAtTime(0.02 * vel, t + 0.4);
+      ng.gain.exponentialRampToValueAtTime(0.0001, end);
+      nz.connect(bp); bp.connect(ng); ng.connect(melOut);
+      nz.start(t); nz.stop(end);
+    }
+
+    function sarangi(f, t, dur, vel, from) {
+      var end = t + dur + 0.8;
+      var env = ctx.createGain();
+      env.gain.setValueAtTime(0.0001, t);
+      env.gain.exponentialRampToValueAtTime(0.14 * vel, t + 0.3);
+      env.gain.setValueAtTime(0.14 * vel, t + Math.max(0.35, dur * 0.8));
+      env.gain.exponentialRampToValueAtTime(0.0001, end);
+      var low = ctx.createBiquadFilter();
+      low.type = 'lowpass';
+      low.frequency.value = 1700;
+      low.Q.value = 2;
+      var nasal = ctx.createBiquadFilter();
+      nasal.type = 'peaking';
+      nasal.frequency.value = 1100;
+      nasal.gain.value = 9;
+      nasal.Q.value = 1.4;
+      env.connect(low); low.connect(nasal); nasal.connect(melOut);
+      var lfo = ctx.createOscillator();
+      lfo.frequency.value = rnd(5.4, 6.2);
+      var depth = ctx.createGain();
+      depth.gain.setValueAtTime(0, t);
+      depth.gain.linearRampToValueAtTime(f * 0.013, t + 0.7);
+      lfo.connect(depth);
+      lfo.start(t); lfo.stop(end);
+      [-5, 5].forEach(function (c) {
+        var o = ctx.createOscillator();
+        o.type = 'sawtooth';
+        o.detune.value = c;
+        o.frequency.setValueAtTime(from || f, t);
+        o.frequency.exponentialRampToValueAtTime(f, t + 0.45);
+        depth.connect(o.frequency);
+        o.connect(env);
+        o.start(t); o.stop(end);
+      });
+    }
+
+    function sitar(f, t, vel, from) {
+      var filt = ctx.createBiquadFilter();
+      filt.type = 'lowpass';
+      filt.Q.value = 3;
+      filt.frequency.setValueAtTime(5200, t);
+      filt.frequency.exponentialRampToValueAtTime(700, t + 1.6);
+      var g = ctx.createGain();
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.2 * vel, t + 0.006);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 2.6);
+      filt.connect(g); g.connect(melOut);
+      [['sawtooth', 1, 1], ['square', 2.01, 0.28], ['sawtooth', 3.02, 0.16]].forEach(function (h) {
+        var o = ctx.createOscillator(), hg = ctx.createGain();
+        o.type = h[0];
+        o.frequency.setValueAtTime((from || f) * h[1], t);
+        o.frequency.exponentialRampToValueAtTime(f * h[1], t + 0.1);
+        hg.gain.value = h[2];
+        o.connect(hg); hg.connect(filt);
+        o.start(t); o.stop(t + 2.8);
+      });
+    }
+
+    function santoor(f, t, vel) {
+      var g = ctx.createGain();
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.13 * vel, t + 0.004);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 3.2);
+      g.connect(melOut);
+      [[1, 1, 0], [1.004, 0.7, 0], [2.01, 0.35, 0], [3.02, 0.16, 0], [4.7, 0.07, 0]].forEach(function (h) {
+        var o = ctx.createOscillator(), hg = ctx.createGain();
+        o.type = 'sine';
+        o.frequency.value = f * h[0];
+        hg.gain.setValueAtTime(h[1], t);
+        hg.gain.exponentialRampToValueAtTime(0.0001, t + (h[0] > 2 ? 0.7 : 3.1));
+        o.connect(hg); hg.connect(g);
+        o.start(t); o.stop(t + 3.3);
+      });
+    }
+
+    /* ----- tabla (keherwa, 8 beats) ----- */
+    function bayan(t, v) {
+      var o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'sine';
+      o.frequency.setValueAtTime(130, t);
+      o.frequency.exponentialRampToValueAtTime(62, t + 0.3);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.4 * v, t + 0.008);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.5);
+      o.connect(g); g.connect(bus);
+      o.start(t); o.stop(t + 0.55);
+    }
+    function dayan(t, v, pitch) {
+      var o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'sine';
+      o.frequency.setValueAtTime(pitch * 1.06, t);
+      o.frequency.exponentialRampToValueAtTime(pitch, t + 0.05);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.2 * v, t + 0.004);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.3);
+      o.connect(g); g.connect(bus);
+      o.start(t); o.stop(t + 0.35);
+      var nz = ctx.createBufferSource();
+      nz.buffer = breathBuf;
+      var bp = ctx.createBiquadFilter();
+      bp.type = 'bandpass';
+      bp.frequency.value = 2800;
+      var ng = ctx.createGain();
+      ng.gain.setValueAtTime(0.1 * v, t);
+      ng.gain.exponentialRampToValueAtTime(0.0001, t + 0.04);
+      nz.connect(bp); bp.connect(ng); ng.connect(bus);
+      nz.start(t); nz.stop(t + 0.1);
+    }
+    var KEHERWA = [
+      function (t) { bayan(t, 1); dayan(t, 1, 440); },
+      function (t) { bayan(t, 0.55); },
+      function (t) { dayan(t, 0.8, 440); },
+      function (t) { dayan(t, 0.7, 600); },
+      function (t) { dayan(t, 0.8, 440); },
+      function (t) { bayan(t, 0.4); },
+      function (t) { bayan(t, 0.8); dayan(t, 0.8, 440); },
+      function (t) { dayan(t, 0.7, 600); }
+    ];
+
+    var prevF = Sa * 2 * scale[0];
+    function clamp(i, n) { return Math.max(0, Math.min(n - 1, i)); }
+
+    /* ----- free-time alap, used by flute and sarangi ----- */
+    function alap(noteFn, lenMul, step, gap) {
+      var L = Math.min(scale.length, 8), pos = 0;
+      function run() {
+        var total = 0;
+        if (ctx.state === 'running') {
+          var seq = [], r = Math.random(), p = pos, i, n;
+          if (pos >= L - 2) r = 0.5;
+          if (pos === 0 && r >= 0.34 && r < 0.7) r = 0.1;
+          if (r < 0.34) {
+            n = 2 + Math.floor(Math.random() * 3);
+            for (i = 0; i < n; i++) { p = clamp(p + 1 + (Math.random() < 0.2 ? 1 : 0), L); seq.push([p, rnd(1.1, 2)]); }
+            seq[seq.length - 1][1] = rnd(3, 5);
+          } else if (r < 0.7) {
+            n = 2 + Math.floor(Math.random() * 3);
+            for (i = 0; i < n; i++) { p = clamp(p - 1, L); seq.push([p, rnd(1.1, 2)]); }
+            seq[seq.length - 1][1] = rnd(3.5, 5.5);
+          } else if (r < 0.88) {
+            seq.push([clamp(p + 1, L), 0.16]);
+            seq.push([p, rnd(2.6, 4.6)]);
+          } else {
+            p = 0;
+            seq.push([0, rnd(4.5, 6.5)]);
+          }
+          var t = ctx.currentTime + 0.05;
+          seq.forEach(function (nt) {
+            var f = Sa * 2 * scale[nt[0]], d = nt[1] * lenMul;
+            noteFn(f, t, d, rnd(0.8, 1.1), prevF);
+            prevF = f;
+            t += d * step;
+            total += d * step;
+          });
+          pos = p;
+        }
+        later(run, total * 1000 + rnd(gap[0], gap[1]));
+      }
+      later(run, 3500);
+    }
+
+    if (st === 'flute') {
+      tanpura(0.5, 1700);
+      alap(bansuri, 1, 0.94, [2000, 4500]);
+    } else if (st === 'sarangi') {
+      pad('sawtooth', 0.1, 650);
+      alap(sarangi, 1.3, 0.8, [1500, 3500]);
+    } else if (st === 'sitar') {
+      tanpura(0.3, 2000);
+      var beat = 0.72, tNext = ctx.currentTime + 0.6, spos = 2, SL = scale.length;
+      var cycle = function (t0) {
+        var i, k, tb, r, n, step, f;
+        for (i = 0; i < 8; i++) {
+          tb = t0 + i * beat;
+          KEHERWA[i](tb);
+          r = Math.random();
+          n = r < 0.5 ? 1 : (r < 0.78 ? 2 : 0);
+          for (k = 0; k < n; k++) {
+            step = Math.floor(Math.random() * 5) - 2 - (spos > 6 ? 1 : 0) + (spos < 1 ? 1 : 0);
+            spos = clamp(spos + step, SL);
+            f = Sa * 2 * scale[spos];
+            sitar(f, tb + k * beat / 2 + rnd(0, 0.02), rnd(0.7, 1.1), prevF);
+            prevF = f;
+          }
+        }
+      };
+      var loop = function () {
+        if (ctx.state === 'running') {
+          if (tNext < ctx.currentTime) tNext = ctx.currentTime + 0.1;
+          while (tNext < ctx.currentTime + 2) { cycle(tNext); tNext += 8 * beat; }
+        }
+        later(loop, 500);
+      };
+      loop();
+    } else {
+      pad('sine', 0.05, 900);
+      var SN = scale.length;
+      var play = function () {
+        var total = 0;
+        if (ctx.state === 'running') {
+          var t = ctx.currentTime + 0.05, t0 = t, r = Math.random(), i, p, dir, n, dt;
+          if (r < 0.7) {
+            n = 6 + Math.floor(Math.random() * 7);
+            dir = Math.random() < 0.5 ? 1 : -1;
+            dt = rnd(0.2, 0.28);
+            p = dir > 0 ? Math.floor(Math.random() * 3) : clamp(5 + Math.floor(Math.random() * 3), SN);
+            for (i = 0; i < n; i++) {
+              santoor(Sa * 2 * scale[p], t, rnd(0.7, 1));
+              t += dt * (1 - 0.02 * i);
+              p += dir * (Math.random() < 0.8 ? 1 : 2);
+              if (p >= SN) { p = SN - 2; dir = -1; }
+              if (p < 0) { p = 1; dir = 1; }
+            }
+          } else {
+            p = 1 + Math.floor(Math.random() * 5);
+            for (i = 0; i < 10; i++) {
+              santoor(Sa * 2 * scale[p], t, 0.45 + 0.05 * i);
+              t += 0.085;
+            }
+            santoor(Sa * 2 * scale[p], t, 1);
+            t += 0.5;
+          }
+          total = t - t0;
+        }
+        later(play, total * 1000 + rnd(1800, 4800));
+      };
+      later(play, 2500);
+    }
+
+    ambient = {
+      gain: bus, src: null,
+      halt: function () {
+        stopped = true;
+        timers.forEach(clearTimeout);
+        oscs.forEach(function (o) { try { o.stop(ctx.currentTime + 1.7); } catch (e) {} });
+      }
+    };
+  }
+  /* Uploaded recordings, published next to the page. */
+  var TRACKS = {
+    track1: 'audio/guided-meditation.mp3',
+    track2: 'audio/meditation-music.mp3',
+    track4: 'audio/relaxing-flute-meditation.mp3',
+    track5: 'audio/leberch-meditation.mp3',
+    track6: 'audio/lotus-secret-garden.mp3'
+  };
+  /* Phones only let audio start from a tap. So the recording is created and started (silently) inside the Start tap,
+     and when the music is due it is rewound and faded in, instead of being created 17 seconds later with no tap behind it. */
+  var prepared = null;
+  function retryOnTap(fn) {
+    var h = function () { document.removeEventListener('pointerdown', h, true); fn(); };
+    document.addEventListener('pointerdown', h, true);
+  }
+  function prepareTrack(kind) {
+    prepared = null;
+    var url = TRACKS[kind];
+    if (!url || !ctx) return;
+    var el = new Audio(url), g = ctx.createGain(), routed = false;
+    el.loop = true;
+    el.preload = 'auto';
+    g.gain.value = 0;
+    try {
+      var src = ctx.createMediaElementSource(el);
+      src.connect(g); g.connect(master);
+      routed = true;
+    } catch (e) { el.muted = true; }
+    prepared = { el: el, g: g, routed: routed };
+    var pr = el.play();
+    if (pr && pr.catch) pr.catch(function () {});
+  }
+  function dropPrepared() {
+    var p = prepared; prepared = null;
+    if (p) { try { p.el.pause(); p.el.removeAttribute('src'); p.el.load(); } catch (e) {} }
+  }
+  function startTrack(kind) {
+    var p = prepared; prepared = null;
+    if (!p) {
+      var el0 = new Audio(TRACKS[kind]), g0 = ctx.createGain(), r0 = false;
+      el0.loop = true;
+      g0.gain.value = 0;
+      try { var s0 = ctx.createMediaElementSource(el0); s0.connect(g0); g0.connect(master); r0 = true; } catch (e) { el0.muted = true; }
+      p = { el: el0, g: g0, routed: r0 };
+    }
+    var el = p.el, g = p.g, routed = p.routed;
+    try { el.currentTime = 0; } catch (e) {}
+    if (routed) {
+      g.gain.cancelScheduledValues(ctx.currentTime);
+      g.gain.setValueAtTime(0, ctx.currentTime);
+      g.gain.linearRampToValueAtTime(1, ctx.currentTime + 2.5);
+    } else {
+      el.muted = muted;
+    }
+    ambient = {
+      gain: g, src: null, el: el, routed: routed,
+      halt: function () { setTimeout(function () { try { el.pause(); el.removeAttribute('src'); el.load(); } catch (e) {} }, 1700); }
+    };
+    var pr = el.play();
+    if (pr && pr.catch) {
+      pr.catch(function () {
+        retryOnTap(function () {
+          try { if (ctx && ctx.state !== 'running') ctx.resume(); el.play(); } catch (e) {}
+        });
+      });
+    }
+  }
+  function startAmbient(kind) {
+    if (!ctx || kind === 'off') return;
+    if (RAGAS[kind]) { startIndia(RAGAS[kind]); return; }
+    if (TRACKS[kind]) { startTrack(kind); return; }
+    var src = ctx.createBufferSource();
+    src.buffer = noiseBuffer(kind);
+    src.loop = true;
+    var filt = ctx.createBiquadFilter();
+    var gain = ctx.createGain();
+    if (kind === 'wind') { filt.type = 'lowpass'; filt.frequency.value = 600; }
+    else { filt.type = 'bandpass'; filt.frequency.value = 3200; filt.Q.value = 0.5; }
+    gain.gain.value = 0;
+    src.connect(filt); filt.connect(gain); gain.connect(master);
+    src.start();
+    var target = kind === 'wind' ? 0.5 : 0.22;
+    gain.gain.linearRampToValueAtTime(target, ctx.currentTime + 3);
+    ambient = { src: src, gain: gain };
+  }
+  function stopAmbient() {
+    if (!ambient || !ctx) return;
+    var a = ambient; ambient = null;
+    try {
+      a.gain.gain.cancelScheduledValues(ctx.currentTime);
+      a.gain.gain.setValueAtTime(a.gain.gain.value, ctx.currentTime);
+      a.gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 1.5);
+      if (a.src) a.src.stop(ctx.currentTime + 1.6);
+    } catch (e) {}
+    if (a.halt) a.halt();
+  }
+  function bell() {
+    if (!ctx) return 0;
+    var t = ctx.currentTime;
+    /* Tibetan singing bowl: inharmonic partials, each with a slightly detuned twin so the tone shimmers as it fades. */
+    var base = 228;
+    [[1, 0.42, 12], [2.65, 0.26, 9], [4.95, 0.13, 6], [7.9, 0.06, 4]].forEach(function (p) {
+      [0, 1].forEach(function (twin) {
+        var o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = 'sine';
+        o.frequency.value = base * p[0] * (twin ? 1.0035 : 1);
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(p[1] * (twin ? 0.7 : 1), t + 0.05);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + p[2]);
+        o.connect(g); g.connect(master);
+        o.start(t); o.stop(t + p[2] + 0.2);
+      });
+    });
+    return 12; /* seconds until the longest partial has died away */
+  }
+  /* A low "Om" tone swelling under each exhale of the Om meditation (136.1 Hz, the traditional pitch). */
+  function omTone(dur) {
+    if (!ctx || ctx.state !== 'running') return;
+    var t = ctx.currentTime, end = t + dur;
+    var g = ctx.createGain(), f = ctx.createBiquadFilter();
+    f.type = 'lowpass';
+    f.frequency.value = 700;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.16, t + 1.2);
+    g.gain.setValueAtTime(0.16, Math.max(t + 1.3, end - 1.6));
+    g.gain.exponentialRampToValueAtTime(0.0001, end);
+    f.connect(g); g.connect(master);
+    [[1, 1, 'triangle'], [2, 0.45, 'sine'], [3, 0.2, 'sine']].forEach(function (h) {
+      var o = ctx.createOscillator(), og = ctx.createGain();
+      o.type = h[2];
+      o.frequency.value = 136.1 * h[0];
+      og.gain.value = h[1];
+      o.connect(og); og.connect(f);
+      o.start(t); o.stop(end + 0.1);
+    });
+  }
+  function pulseSound() {
+    if (!ctx || ctx.state !== 'running') return;
+    var t = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(200, t);
+    o.frequency.exponentialRampToValueAtTime(120, t + 0.08);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.09, t + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
+    o.connect(g); g.connect(master);
+    o.start(t); o.stop(t + 0.15);
+  }
+  function setMuted(m) {
+    muted = m;
+    if (ambient && ambient.el && !ambient.routed) ambient.el.muted = m;
+    if (master && ctx) master.gain.setTargetAtTime(m ? 0 : vol, ctx.currentTime, 0.1);
+    $('mute').textContent = m ? 'צליל: כבוי' : 'צליל: פעיל';
+    $('mute').setAttribute('aria-pressed', String(m));
+  }
+
+  /* ---------- Session ---------- */
+  var S = null, raf = 0, timer = 0, wake = null;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MIN = reduce ? 0.85 : 0.55;
+
+  function ease(t) { return 0.5 - 0.5 * Math.cos(Math.PI * t); }
+
+  function position(practice, sec) {
+    var pat = practice.pattern, cycle = 0, i;
+    for (i = 0; i < pat.length; i++) cycle += pat[i][1];
+    var t = sec % cycle;
+    for (i = 0; i < pat.length; i++) {
+      if (t < pat[i][1]) break;
+      t -= pat[i][1];
+    }
+    var ph = pat[i], frac = t / ph[1], scale;
+    if (ph[2] === 'pump') scale = reduce ? (MIN + 1) / 2 : MIN + (1 - MIN) * (0.5 - 0.5 * Math.cos(2 * Math.PI * (ph[3] || 1.5) * t));
+    else if (ph[2] === 'in') scale = MIN + (1 - MIN) * ease(frac);
+    else if (ph[2] === 'out') scale = 1 - (1 - MIN) * ease(frac);
+    else {
+      var prev = pat[(i + pat.length - 1) % pat.length];
+      scale = prev[2] === 'in' ? 1 : MIN;
+    }
+    return { scale: scale, word: ph[0], left: Math.ceil(ph[1] - t), index: i, pump: ph[2] === 'pump', rate: ph[3] || 1.5 };
+  }
+
+  function fmt(sec) {
+    sec = Math.max(0, Math.ceil(sec));
+    return pad(Math.floor(sec / 60)) + ':' + pad(sec % 60);
+  }
+
+  function show(id) {
+    ['home', 'session', 'done'].forEach(function (n) { $(n).hidden = n !== id; });
+    window.scrollTo(0, 0);
+  }
+
+  var ambientTimer = 0;
+  function begin(pid) {
+    musicStop();
+    pid = typeof pid === 'string' ? pid : state.practice;
+    var practice = PRACTICES.filter(function (p) { return p.id === pid; })[0] || PRACTICES[0];
+    S = { practice: practice, total: state.dur * 60, elapsed: 0, last: performance.now(), running: true, cueIdx: -1 };
+    ensureAudio();
+    if (ctx && ctx.state === 'suspended') ctx.resume();
+    setMuted(false);
+    dropPrepared();
+    prepareTrack(state.sound);
+    /* The bowl rings alone; the background music enters 10 seconds after the start.
+       Timed on the audio clock, so pausing the session also pauses this countdown. */
+    var bowl = bell();
+    clearInterval(ambientTimer);
+    S.ambientPending = true;
+    S.ambientAt = ctx ? ctx.currentTime + 10 : 0;
+    ambientTimer = setInterval(function () {
+      if (!S || !S.ambientPending) { clearInterval(ambientTimer); return; }
+      if (S.running && ctx && ctx.state !== 'running') {
+        try { ctx.resume(); } catch (e) {}
+        if (!S.tapRetry) { S.tapRetry = true; retryOnTap(function () { try { if (ctx) ctx.resume(); } catch (e) {} }); }
+      }
+      if (S.running && ctx && ctx.currentTime >= S.ambientAt) {
+        S.ambientPending = false;
+        clearInterval(ambientTimer);
+        startAmbient(state.sound);
+      }
+    }, 250);
+    $('pause').textContent = 'השהיה';
+    $('cue').textContent = '';
+    show('session');
+    try {
+      if (navigator.wakeLock) navigator.wakeLock.request('screen').then(function (l) { wake = l; }, function () {});
+    } catch (e) {}
+    cancelAnimationFrame(raf); clearInterval(timer);
+    raf = requestAnimationFrame(frame);
+    timer = setInterval(tick, 500);
+    tick();
+  }
+
+  function tick() {
+    if (!S) return;
+    var now = performance.now();
+    if (S.running) S.elapsed += (now - S.last) / 1000;
+    S.last = now;
+    if (S.elapsed >= S.total) { finish(true); return; }
+    if (!S.ambientStopped && S.elapsed >= S.total - 5) {
+      /* the background music fades out 5 seconds before the closing bell */
+      S.ambientStopped = true; S.ambientPending = false;
+      clearInterval(ambientTimer);
+      stopAmbient();
+    }
+    draw();
+  }
+  function frame() {
+    if (!S) return;
+    tick();
+    if (S) raf = requestAnimationFrame(frame);
+  }
+  function draw() {
+    var pos = position(S.practice, S.elapsed);
+    var hum = S.practice.hum;
+    if (hum != null) {
+      var pat = S.practice.pattern, cyc = 0;
+      pat.forEach(function (p) { cyc += p[1]; });
+      var humKey = Math.floor(S.elapsed / cyc) * pat.length + pos.index;
+      if (humKey !== S.humKey) { S.humKey = humKey; if (pos.index === hum && S.running) omTone(pat[hum][1]); }
+    }
+    if (pos.pump) {
+      var pumpKey = Math.floor(S.elapsed * pos.rate);
+      if (pumpKey !== S.pumpKey) { S.pumpKey = pumpKey; if (S.running) pulseSound(); }
+    }
+    $('orb').style.transform = 'scale(' + pos.scale.toFixed(4) + ')';
+    $('word').textContent = S.practice.plain ? '' : pos.word;
+    $('count').textContent = S.practice.plain ? '' : pos.left;
+    $('time').textContent = fmt(S.total - S.elapsed);
+    $('bar').style.width = (S.elapsed / S.total * 100).toFixed(2) + '%';
+    $('ring').style.strokeDashoffset = (295.31 * (1 - Math.min(1, S.elapsed / S.total))).toFixed(1);
+    var cues = S.practice.cues;
+    if (cues) {
+      var idx = Math.min(cues.length - 1, Math.floor(S.elapsed / S.total * cues.length));
+      if (idx !== S.cueIdx) { S.cueIdx = idx; $('cue').textContent = cues[idx]; }
+    } else if (S.practice.plain && S.cueIdx !== 0) {
+      S.cueIdx = 0; $('cue').textContent = 'שבו בשקט. כשהמחשבות נודדות, חזרו לנשימה.';
+    } else if (!S.practice.plain && S.cueIdx !== 0) {
+      S.cueIdx = 0; $('cue').textContent = 'עקבו אחרי העיגול. הוא גדל בשאיפה ומתכווץ בנשיפה.';
+    }
+  }
+
+  function cleanup() {
+    cancelAnimationFrame(raf); clearInterval(timer); clearInterval(ambientTimer);
+    dropPrepared();
+    stopAmbient();
+    try { if (wake) { wake.release(); wake = null; } } catch (e) {}
+  }
+
+  function finish(complete) {
+    if (!S) return;
+    var secs = Math.min(S.elapsed, S.total);
+    var s = S; S = null;
+    cleanup();
+    if (complete) { bell(); setTimeout(bell, 4000); }
+    if (complete || secs >= 60) {
+      state.remind.last = key(new Date());
+      save();
+      $('d-text').textContent = 'תרגול ' + s.practice.name + ' הסתיים. קחו רגע לפני שחוזרים.';
+      show('done');
+    } else {
+      renderHome();
+      show('home');
+    }
+  }
+
+  $('start').addEventListener('click', function () { begin(); });
+  $('end').addEventListener('click', function () { finish(false); });
+  $('back').addEventListener('click', function () { renderHome(); show('home'); });
+  $('mute').addEventListener('click', function () { setMuted(!muted); });
+  $('pause').addEventListener('click', function () {
+    if (!S) return;
+    tick();
+    S.running = !S.running;
+    S.last = performance.now();
+    $('pause').textContent = S.running ? 'השהיה' : 'המשך';
+    if (ctx) { if (S.running) ctx.resume(); else ctx.suspend(); }
+    if (ambient && ambient.el) { try { if (S.running) ambient.el.play(); else ambient.el.pause(); } catch (e) {} }
+  });
+
+  /* ---------- Tabs ---------- */
+  var TABS = ['practice', 'prana', 'study', 'mantras', 'music'];
+  var HERO = {
+    practice: { t: 'צעדים קטנים,\nשקט גדול.', p: 'כמה דקות של נשימה עושות הבדל.' },
+    prana: { t: 'הנשימה\nהיא הגשר.', p: 'טכניקות פראנאיאמה מסורתיות, בקצב שלך.' },
+    study: { t: 'שיעור קטן,\nמחשבה גדולה.', p: 'לימוד יומי מתורת האדוויתה וידאנתה.' },
+    mantras: { t: 'הברה אחת,\nלב שקט.', p: 'חזרה על מנטרה עם ספירה.' },
+    music: { t: 'להקשיב\nלשקט.', p: 'הקלטות להרגעה ולריכוז.' }
+  };
+  function setTab(id) {
+    document.body.setAttribute('data-tab', id);
+    TABS.forEach(function (n) {
+      $('tab-' + n).hidden = n !== id;
+      $('t-' + n).setAttribute('aria-selected', String(n === id));
+    });
+    $('hero').setAttribute('data-hero', id);
+    $('hero-t').textContent = HERO[id].t;
+    $('hero-p').textContent = HERO[id].p;
+    $('hero-go').hidden = id !== 'practice';
+    $('hero').hidden = id === 'music' && music.view === 'player';
+  }
+  $('hero-go').addEventListener('click', function () { begin(); });
+  TABS.forEach(function (n) { $('t-' + n).addEventListener('click', function () { setTab(n); }); });
+
+  /* ---------- Daily study: Advaita Vedanta ---------- */
+  var LESSONS = [
+    { sk: 'אטמן', tr: 'Ātman', t: 'מי הוא המתבונן', b: 'בוודאנטה האדוויטית העצמי האמיתי, אטמן, אינו הגוף ואינו המחשבות. הוא המודעות שבה הכול מתגלה. תחושות, רגשות ומחשבות באים והולכים, והמודעות שמבחינה בהם נשארת.', src: 'אטמה בודהה, המיוחס לשנקרה', q: 'מי מבחין במחשבה שעוברת עכשיו?' },
+    { sk: 'ברהמן', tr: 'Brahman', t: 'היסוד האחד', b: 'ברהמן הוא המציאות הבלתי משתנה שבבסיס כל מה שנראה. טייטיריה אופנישד מתארת אותו כאמת, ידיעה ואינסוף, והמסורת המאוחרת כקיום, מודעות ואושר. הוא לא אל שנמצא מחוץ לעולם אלא עצם הקיום שלו.', src: 'טייטיריה אופנישד 2.1', q: 'מה בחוויה שלך קיים תמיד, גם כשהכול משתנה?' },
+    { sk: 'אדוויתה', tr: 'Advaita', t: 'לא שניים', b: 'המילה פירושה “אי-שניות”. אין כאן ספירה של “אחד”, אלא הכרה שהעצמי הפרטי וברהמן אינם שני דברים נפרדים. את התורה ארגן והפיץ שנקרה, סביב המאה ה-8.', src: 'שנקרה, פירושים לברהמה-סוטרה', q: 'איזו הפרדה בין “אני” לבין “העולם” נראית לך מובנת מאליה?' },
+    { sk: 'מאיה', tr: 'Māyā', t: 'החבל והנחש', b: 'דוגמה קלאסית: בדמדומים אדם רואה נחש, ואז מבין שזה חבל. הנחש לא היה שם מעולם, אבל הפחד היה אמיתי. אדוויתה אומרת שהעולם הנפרד והמשתנה נראה כך עד שרואים את מה שמתחתיו.', src: 'מסורת ההוראה של אדוויתה', q: 'על איזה “נחש” בחייך הסתכלת בלי להדליק אור?' },
+    { sk: 'אדיאסה', tr: 'Adhyāsa', t: 'הדבקת תכונות', b: 'אנחנו אומרים “אני עצוב”, “אני עייף”, “אני מצליח”, כאילו התכונות של הגוף והנפש שייכות למתבונן. שנקרה קורא לזה אדיאסה, הדבקה של דבר אחד על דבר אחר. ההבחנה בין השניים היא תחילת השחרור.', src: 'שנקרה, מבוא לברהמה-סוטרה בהאשיה', q: 'איזה תיאור של עצמך תוכל לנסח כך: “יש עצב”, במקום “אני עצוב”?' },
+    { sk: 'נטי נטי', tr: 'Neti neti', t: 'לא זה, לא זה', b: 'שיטת השלילה מהבריהדאראניאקה אופנישד: מסירים את מה שאינו העצמי. אני לא הגוף, לא התחושה, לא המחשבה. מה שנשאר אחרי שהכול נשלל הוא המודעות עצמה, שאי אפשר לשלול כי היא זו ששוללת.', src: 'בריהדאראניאקה אופנישד', q: 'מה נשאר כשאתה מסיר מעצמך כל תיאור?' },
+    { sk: 'תת תוואם אסי', tr: 'Tat tvam asi', t: 'זה אתה', b: 'במשפט מהצ׳נדוגיה אופנישד אב מלמד את בנו שווטקטו שמהותו היא המהות של הכול. זה אחד מ“המשפטים הגדולים” (מהאוואקיה). ההוראה אינה אמונה אלא הכרה שאפשר לבדוק בניסיון.', src: 'צ׳נדוגיה אופנישד, פרק 6', q: 'מה משתנה אם “זה” בכלל לא רחוק ממך?' },
+    { sk: 'אהם ברהמאסמי', tr: 'Ahaṃ brahmāsmi', t: 'אני ברהמן', b: 'עוד משפט גדול, מהבריהדאראניאקה אופנישד. הוא לא אומר שהאגו הוא אלוהים. הוא אומר שהעצמי שמאחורי כל “אני” הוא אותה מציאות אחת, ושהאגו הוא שכבה דקה עליה.', src: 'בריהדאראניאקה אופנישד 1.4.10', q: 'מה ההבדל בין “אני גדול” לבין “אני אינסופי”?' },
+    { sk: 'טוריה', tr: 'Turīya', t: 'הרביעי', b: 'מנדוקיה אופנישד מתארת ערות, חלום ושינה עמוקה. המצבים באים והולכים, אבל המודעות שנוכחת בכולם נקראת טוריה, “הרביעי”. היא לא מצב נוסף אלא הרקע של כל המצבים.', src: 'מנדוקיה אופנישד וגאודפאדה קאריקה', q: 'מי היה שם גם בחלום וגם בערות?' },
+    { sk: 'סאקשי', tr: 'Sākṣī', t: 'העד', b: 'העד הוא המודעות שרואה את החוויות בלי להשתתף בהן. שמש מאירה בית בלי להיות מושפעת ממה שקורה בו. תרגול העד הוא להבחין: “יש כעס”, “יש מחשבה”, ולשים לב למי שמבחין.', src: 'מסורת ההוראה של אדוויתה', q: 'האם העד נהיה עייף או כועס כשאתה כועס?' },
+    { sk: 'פנצ׳ה קושה', tr: 'Pañca kośa', t: 'חמש מעטפות', b: 'טייטיריה אופנישד מתארת את האדם כחמש שכבות, כמו בצל: גוף פיזי, נשימה ואנרגיה, מחשבה ורגש, שכל והבחנה, ואושר. הלימוד הוא לעבור מעטפה אחר מעטפה ולשאול מי מכיר אותה.', src: 'טייטיריה אופנישד, ברהמננדה ואלי', q: 'באיזו מעטפה אתה נמצא עכשיו, ומי שם לב לכך?' },
+    { sk: 'ויבקה', tr: 'Viveka', t: 'אבחנה', b: 'ויבקה היא היכולת להבדיל בין מה שקבוע למה שחולף. זו הראשונה מארבע התכונות שהמסורת דורשת מתלמיד, והיא נבנית בהתבוננות קטנה כל יום, לא ברגע אחד גדול.', src: 'ויבקצ׳ודמני, המיוחס לשנקרה', q: 'מה מהדברים שדאגת להם היום יהיה חשוב בעוד שנה?' },
+    { sk: 'ויראגיה', tr: 'Vairāgya', t: 'אי-היאחזות', b: 'ויראגיה אינה דחיית העולם אלא הפסקת ההישענות על דברים כדי להיות שלמים. אפשר ליהנות מכל דבר בלי להיות תלוי בו. ככל שההיאחזות קטנה, כך השקט יציב יותר.', src: 'ויבקצ׳ודמני, המיוחס לשנקרה', q: 'ממה אתה מצפה שיביא לך שלווה, והאם זה אכן קרה בעבר?' },
+    { sk: 'שרוונה, מנאנה, נידידיאסנה', tr: 'Śravaṇa · Manana · Nididhyāsana', t: 'שלושה שלבי לימוד', b: 'ההוראה האדוויטית מתקדמת בשלושה שלבים: שמיעה של הטקסטים ממורה, הרהור עד שהשאלות נפתרות, והתבוננות עמוקה עד שהידע נעשה חוויה. המדיטציה שלך כאן שייכת לשלב השלישי.', src: 'בריהדאראניאקה אופנישד 2.4.5', q: 'איזו שאלה עדיין לא נפתרה לך, ולמי תוכל לשאול אותה?' },
+    { sk: 'קארמה יוגה', tr: 'Karma yoga', t: 'פעולה בלי תלות בפרי', b: 'בבהגווד גיטה קרישנה אומר לארג׳ונה שהזכות שלו היא על הפעולה ולא על תוצאותיה. בגישה האדוויטית פעולה שאינה תלויה בתוצאה מכינה את הנפש לידע. עושים כמיטב היכולת ומרפים מהתוצאה.', src: 'בהגווד גיטה 2.47', q: 'איזו פעולה היום תוכל לעשות בלי לדאוג איך תתקבל?' },
+    { sk: 'ג׳ניאנה', tr: 'Jñāna', t: 'שחרור דרך ידע', b: 'לפי אדוויתה השחרור (מוקשה) אינו הישג שמרוויחים בפעולה, כי העצמי כבר שלם. מה שחסר הוא ידע שמסיר את הבורות (אווידיה). כמו מי ששכח איפה שם את המשקפיים שעל ראשו: אין צורך לחפש, רק לראות.', src: 'שנקרה, אפדשסהסרי', q: 'מה אתה מחפש בחוץ שאולי כבר נמצא בפנים?' },
+    { sk: 'ג׳יוואנמוקטי', tr: 'Jīvanmukti', t: 'משוחרר בחיים', b: 'ג׳יוואנמוקטי הוא מי שהכיר את טבעו האמיתי תוך כדי חיים. הוא ממשיך לאכול, לעבוד ולהרגיש, אך כבר לא מתבלבל בין עצמו לבין ההתנסויות. החיים נמשכים, רק הזהות השתנתה.', src: 'ויבקצ׳ודמני, המיוחס לשנקרה', q: 'איך היית פועל אם לא היית צריך להגן על דימוי עצמי?' },
+    { sk: 'אהנקרה', tr: 'Ahaṅkāra', t: 'האגו', b: 'האגו הוא הדמות הפנימית שאומרת “אני” ובמשפט הבא כבר מדברת על “שלי”. אדוויתה לא מבקשת להרוג אותו אלא לראות שהוא רעיון בתוך המודעות, כמו דמות בחלום.', src: 'מסורת ההוראה של אדוויתה', q: 'מתי הבחנת היום ב“אני” שמתגונן?' },
+    { sk: 'אננדה', tr: 'Ānanda', t: 'אושר ללא סיבה', b: 'בשינה עמוקה אין רכוש, הישגים או נוחות, ובכל זאת מתעוררים בתחושת שלווה. אדוויתה מסיקה שהאושר אינו בא מהחפצים אלא מהרגע שבו התשוקה נרגעת והמודעות חוזרת לעצמה.', src: 'מסורת ההוראה של אדוויתה', q: 'מתי בפעם האחרונה הרגשת שלווה בלי שמשהו קרה?' },
+    { sk: 'שנטי', tr: 'Śānti', t: 'מים שקטים', b: 'כשהמים נרגעים, הירח משתקף בהם בבהירות. כך גם הנפש: לא צריך להפיק את העצמי, צריך להרגיע את המחשבה עד שמה שתמיד נוכח יתגלה. לכן התרגול כאן מתחיל בנשימה.', src: 'מסורת ההוראה של אדוויתה', q: 'מה הכי מרגיע את המחשבות שלך, ומה מעורר אותן?' },
+    { sk: 'אטמה ויצ׳ארה', tr: 'Ātma vicāra', t: 'חקירה עצמית', b: 'רמנה מהרשי (1879–1950) לימד להפנות את השאלה “מי אני?” אל מקור המחשבה. לא מחפשים תשובה במילים אלא מתבוננים מאיפה עולה תחושת ה“אני”. החקירה נגמרת בשקט, לא בנוסחה.', src: 'רמנה מהרשי, “מי אני?”', q: 'מאיפה, בדיוק, עולה תחושת ה“אני”?' }
+  ];
+  var studyOffset = 0;
+  function dayNum() {
+    var d = new Date();
+    return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000);
+  }
+  function lessonIdx() {
+    var n = (dayNum() + studyOffset) % LESSONS.length;
+    return n < 0 ? n + LESSONS.length : n;
+  }
+  function renderStudy() {
+    var i = lessonIdx(), L = LESSONS[i], today = studyOffset === 0;
+    var done = !!state.study[key(new Date())];
+    var html =
+      '<article class="lesson">' +
+        '<span class="eyebrow">שיעור ' + (i + 1) + ' מתוך ' + LESSONS.length + (today ? ' · היום' : '') + '</span>' +
+        '<div class="sk">' + L.sk + '</div>' +
+        '<span class="tr" dir="ltr">' + L.tr + '</span>' +
+        '<h2>' + L.t + '</h2>' +
+        '<p>' + L.b + '</p>' +
+        '<span class="src">מקור: ' + L.src + '</span>' +
+        '<div class="ask"><b>שאלה להתבוננות</b><p>' + L.q + '</p></div>' +
+      '</article>' +
+      '<div class="actions">' +
+        (today
+          ? '<button class="start' + (done ? ' studied' : '') + '" id="s-done" type="button">' + (done ? 'נלמד היום' : 'למדתי את השיעור') + '</button>'
+          : '<button class="start" id="s-today" type="button">חזרה לשיעור של היום</button>') +
+        '<div class="nav"><button class="ghost" id="s-prev" type="button">שיעור קודם</button><button class="ghost" id="s-next" type="button">שיעור הבא</button></div>' +
+        '<button class="ghost" id="s-sit" type="button">שבו 3 דקות עם השאלה</button>' +
+      '</div>';
+    $('tab-study').innerHTML = html;
+  }
+  $('tab-study').addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    if (b.id === 's-prev') { studyOffset--; renderStudy(); }
+    else if (b.id === 's-next') { studyOffset++; renderStudy(); }
+    else if (b.id === 's-today') { studyOffset = 0; renderStudy(); }
+    else if (b.id === 's-done') {
+      var k = key(new Date());
+      if (state.study[k]) delete state.study[k]; else state.study[k] = true;
+      save(); renderStudy();
+    } else if (b.id === 's-sit') {
+      state.practice = 'silent'; state.dur = 3; save();
+      renderChoices(); setTab('practice'); window.scrollTo(0, 0);
+    }
+  });
+
+  /* ---------- Mantras and japa counter ---------- */
+  var MANTRAS = [
+    { id: 'om', he: 'אום', dev: 'ॐ', tr: 'Oṁ', meaning: 'ההברה הראשונית. במנדוקיה אופנישד היא מייצגת את כל מצבי התודעה ואת השקט שאחריהם.', use: 'מאריכים בנשיפה ומרגישים את הרטט בחזה ובראש.' },
+    { id: 'soham', he: 'סו-הם', dev: 'सोऽहम्', tr: 'So’ham', meaning: 'אני הוא. אומרים בלב “סו” בשאיפה ו“הם” בנשיפה, בלי קול.', use: 'מתאימה לישיבה שקטה, בקצב הנשימה.' },
+    { id: 'aham', he: 'אהם ברהמאסמי', dev: 'अहं ब्रह्मास्मि', tr: 'Ahaṃ brahmāsmi', meaning: 'אני ברהמן. העצמי שבי הוא המציאות האחת.', use: 'חוזרים לאט ושמים לב מה עולה.' },
+    { id: 'tat', he: 'תת תוואם אסי', dev: 'तत्त्वमसि', tr: 'Tat tvam asi', meaning: 'זה אתה.', use: 'מתאימה להתבוננות אחרי השיעור היומי.' },
+    { id: 'shanti', he: 'אום שנטי', dev: 'ॐ शान्तिः शान्तिः शान्तिः', tr: 'Oṁ śāntiḥ śāntiḥ śāntiḥ', meaning: 'שלום, שלוש פעמים: שלום פנימי, שלום בסביבה ושלום מעבר לשליטתנו.', use: 'מתאימה לסיום תרגול.' },
+    { id: 'asato', he: 'אסתו מה סדגמאיה', dev: 'असतो मा सद्गमय । तमसो मा ज्योतिर्गमय । मृत्योर्मामृतं गमय ॥', tr: 'Asato mā sad gamaya, tamaso mā jyotir gamaya, mṛtyor mā amṛtaṃ gamaya', meaning: 'הוליכו אותי מהבלתי אמיתי אל האמת, מהחושך אל האור, ממוות אל אלמוות.', use: 'מהבריהדאראניאקה אופנישד. טובה לפתיחת היום.' },
+    { id: 'purna', he: 'פורנמדה', dev: 'ॐ पूर्णमदः पूर्णमिदं पूर्णात्पूर्णमुदच्यते । पूर्णस्य पूर्णमादाय पूर्णमेवावशिष्यते ॥', tr: 'Oṁ pūrṇam adaḥ pūrṇam idaṃ pūrṇāt pūrṇam udacyate, pūrṇasya pūrṇam ādāya pūrṇam evāvaśiṣyate', meaning: 'זה שלם, וזה שלם. מן השלם עולה השלם, ואם לוקחים שלם מן השלם, נשאר שלם.', use: 'פתיחת האישה אופנישד. קרובה במיוחד ללימוד אדוויתה.' },
+    { id: 'gayatri', he: 'גאיטרי מנטרה', dev: 'ॐ भूर्भुवः स्वः । तत्सवितुर्वरेण्यं । भर्गो देवस्य धीमहि । धियो यो नः प्रचोदयात् ॥', tr: 'Oṁ bhūr bhuvaḥ svaḥ, tat savitur vareṇyaṃ, bhargo devasya dhīmahi, dhiyo yo naḥ pracodayāt', meaning: 'אנו מהרהרים באור האלוהי של השמש. שיעורר את ההבנה שלנו.', use: 'מנטרה עתיקה מהריג וודה, מסורתית בזריחה.' },
+    { id: 'shiva', he: 'אום נמה שיוויה', dev: 'ॐ नमः शिवाय', tr: 'Oṁ namaḥ śivāya', meaning: 'השתחוויה לשיווה, הסמל של העצמי הטהור והשקט.', use: 'מנטרה בת חמש הברות, קלה לזכירה.' },
+    { id: 'ganesha', he: 'אום גם גנפטיי', dev: 'ॐ गं गणपतये नमः', tr: 'Oṁ gaṃ gaṇapataye namaḥ', meaning: 'השתחוויה לגנשה, מסיר המכשולים.', use: 'מקובלת בתחילת מיזם או יום חדש.' },
+    { id: 'lokah', he: 'לוקה סמסתה', dev: 'लोकाः समस्ताः सुखिनो भवन्तु', tr: 'Lokāḥ samastāḥ sukhino bhavantu', meaning: 'שיהיו כל היצורים בכל העולמות מאושרים ושלווים.', use: 'לסיום. שולחים טוב לב החוצה.' },
+    { id: 'hare', he: 'הרי קרישנה', dev: 'हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे । हरे राम हरे राम राम राम हरे हरे ॥', tr: 'Hare Kṛṣṇa Hare Kṛṣṇa Kṛṣṇa Kṛṣṇa Hare Hare, Hare Rāma Hare Rāma Rāma Rāma Hare Hare', meaning: 'קריאה לשמות האל כצורת התמסרות (בהקטי).', use: 'שרים בקצב שווה, אפשר בקול.' }
+  ];
+  var mSel = state.mantra && MANTRAS.some(function (m) { return m.id === state.mantra; }) ? state.mantra : MANTRAS[0].id;
+  var mTarget = 108, mCount = 0, mRounds = 0;
+  function mantraById(id) { return MANTRAS.filter(function (m) { return m.id === id; })[0]; }
+
+  function tickSound() {
+    ensureAudio();
+    if (!ctx) return;
+    if (ctx.state === 'suspended') ctx.resume();
+    var t = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'sine';
+    o.frequency.value = 660;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.08, t + 0.005);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
+    o.connect(g); g.connect(master);
+    o.start(t); o.stop(t + 0.15);
+  }
+  function updateCount() {
+    var tap = $('tap');
+    if (!tap) return;
+    tap.style.setProperty('--p', (mCount / mTarget * 100).toFixed(2));
+    $('cnt').textContent = mCount;
+    $('tgt').textContent = 'מתוך ' + mTarget;
+    $('rounds').textContent = 'סבבים שהושלמו: ' + mRounds;
+  }
+  function renderMantras() {
+    var m = mantraById(mSel);
+    var html =
+      '<section class="japa" aria-label="ספירת ג׳אפה">' +
+        '<span class="eyebrow">ג׳אפה: חזרה על מנטרה</span>' +
+        '<div class="dev" lang="sa">' + m.dev + '</div>' +
+        '<div class="tr">' + m.tr + '</div>' +
+        '<button type="button" class="tap" id="tap" aria-label="הוסיפו חזרה אחת"><span><b id="cnt">0</b><small id="tgt"></small></span></button>' +
+        '<div class="chips" role="radiogroup" aria-label="מספר חזרות בסבב">' +
+          [9, 27, 54, 108].map(function (n) {
+            return '<button type="button" class="chip" role="radio" data-target="' + n + '" aria-checked="' + (n === mTarget) + '">' + n + '</button>';
+          }).join('') +
+        '</div>' +
+        '<div class="japa-meta"><span id="rounds"></span><button class="ghost" id="reset" type="button">איפוס</button></div>' +
+      '</section>' +
+      '<h2>בחרו מנטרה</h2>' +
+      '<div class="mlist">' +
+        MANTRAS.map(function (x) {
+          return '<button type="button" class="mcard" data-m="' + x.id + '" aria-pressed="' + (x.id === mSel) + '">' +
+            '<span class="mname">' + x.he + '</span>' +
+            '<span class="mdev" lang="sa">' + x.dev + '</span>' +
+            '<span class="mtr">' + x.tr + '</span>' +
+            '<span class="mmean">' + x.meaning + '</span>' +
+            '<span class="muse">' + x.use + '</span>' +
+          '</button>';
+        }).join('') +
+      '</div>';
+    $('tab-mantras').innerHTML = html;
+    updateCount();
+  }
+  $('tab-mantras').addEventListener('click', function (e) {
+    var tap = e.target.closest('#tap'), b = e.target.closest('button');
+    if (tap) {
+      mCount++; state.japa++; save();
+      tickSound();
+      if (mCount >= mTarget) {
+        mCount = 0; mRounds++;
+        bell();
+        try { if (navigator.vibrate) navigator.vibrate(60); } catch (err) {}
+      }
+      updateCount();
+      return;
+    }
+    if (!b) return;
+    if (b.dataset.target) { mTarget = +b.dataset.target; mCount = 0; renderMantras(); }
+    else if (b.dataset.m) { mSel = b.dataset.m; state.mantra = mSel; save(); mCount = 0; mRounds = 0; renderMantras(); }
+    else if (b.id === 'reset') { mCount = 0; mRounds = 0; updateCount(); }
+  });
+
+  $('tab-prana').addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    if (b.dataset.p) {
+      pOpen = pOpen === b.dataset.p ? null : b.dataset.p;
+      renderPrana();
+      var again = $('prana-list').querySelector('[data-p="' + b.dataset.p + '"]');
+      if (again) again.focus();
+    } else if (b.dataset.start) {
+      begin(b.dataset.start);
+    }
+  });
+
+  /* ---------- Music library ---------- */
+  var MUSIC = [
+    { group: 'הקלטות', items: [
+      { id: 'track1', name: 'Guided Meditation', desc: 'Marlowe Music' },
+      { id: 'track2', name: 'Meditation Music', desc: 'Verclub Music' },
+      { id: 'track4', name: 'Relaxing Flute Meditation', desc: 'Dana Music' },
+      { id: 'track5', name: 'Meditation', desc: 'Leberch' },
+      { id: 'track6', name: 'Lotus Secret Garden', desc: 'מוזיקת מדיטציה' } ] }
+  ];
+  var SLEEP = [0, 15, 30, 60];
+  if (SLEEP.indexOf(state.sleep) < 0) state.sleep = 0;
+  var music = { id: null, view: 'list', paused: false, endAt: 0, stopTimer: 0, tick: 0, seekHold: 0 };
+  var ART = { track1: 1, track2: 3, track4: 4, track5: 5, track6: 2 };
+  function musicItems() {
+    var out = [];
+    MUSIC.forEach(function (g) { g.items.forEach(function (it) { out.push(it); }); });
+    return out;
+  }
+  function musicItem(id) {
+    var all = musicItems();
+    for (var i = 0; i < all.length; i++) if (all[i].id === id) return all[i];
+    return null;
+  }
+  function fmtT(sec) {
+    if (!isFinite(sec) || sec < 0) return '--:--';
+    sec = Math.floor(sec);
+    return Math.floor(sec / 60) + ':' + pad(sec % 60);
+  }
+  function musicLeft() {
+    var txt;
+    if (music.id && music.endAt) txt = 'כיבוי אוטומטי בעוד ' + fmt((music.endAt - Date.now()) / 1000);
+    else txt = state.sleep ? 'הטיימר מתחיל כשמתחילים לנגן.' : 'המוזיקה ממשיכה עד שעוצרים אותה.';
+    $('mu-left').textContent = txt;
+    $('mp-left').textContent = txt;
+  }
+  function updateSeek() {
+    var el = ambient && ambient.el;
+    if (!el || music.view !== 'player') return;
+    if (Date.now() - music.seekHold > 700) {
+      $('mp-seek').value = isFinite(el.duration) && el.duration > 0 ? Math.round(el.currentTime / el.duration * 1000) : 0;
+    }
+    $('mp-cur').textContent = fmtT(el.currentTime);
+    $('mp-dur').textContent = fmtT(el.duration);
+  }
+  function musicTick() { musicLeft(); updateSeek(); }
+  function armSleep() {
+    clearTimeout(music.stopTimer);
+    music.endAt = 0;
+    if (music.id && state.sleep) {
+      music.endAt = Date.now() + state.sleep * 60000;
+      music.stopTimer = setTimeout(function () { musicStop(); }, state.sleep * 60000);
+    }
+    musicLeft();
+  }
+  function musicStop() {
+    clearTimeout(music.stopTimer); clearInterval(music.tick);
+    music.stopTimer = 0; music.tick = 0; music.endAt = 0;
+    if (music.id) { stopAmbient(); dropPrepared(); }
+    music.id = null; music.paused = false; music.view = 'list';
+    renderMusic();
+  }
+  function musicPlay(id) {
+    if (S) return;
+    ensureAudio();
+    if (!ctx) return;
+    if (music.id) stopAmbient();
+    dropPrepared();
+    try { ctx.resume(); } catch (e) {}
+    setMuted(false);
+    if (TRACKS[id]) prepareTrack(id);
+    startAmbient(id);
+    music.id = id; music.paused = false; music.view = 'player';
+    clearInterval(music.tick);
+    music.tick = setInterval(musicTick, 500);
+    armSleep();
+    renderMusic();
+    window.scrollTo(0, 0);
+  }
+  function musicToggle() {
+    var el = ambient && ambient.el;
+    if (!music.id || !el) return;
+    try {
+      if (music.paused) { if (ctx) ctx.resume(); el.play(); music.paused = false; }
+      else { el.pause(); music.paused = true; }
+    } catch (e) {}
+    renderMusic();
+  }
+  function musicStep(dir) {
+    var all = musicItems(), i = 0;
+    for (var k = 0; k < all.length; k++) if (all[k].id === music.id) i = k;
+    musicPlay(all[(i + dir + all.length) % all.length].id);
+  }
+  var ICON_PLAY = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9-5.5z"/></svg>';
+  var ICON_STOP = '<svg viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="2.5" width="9" height="9" rx="1"/></svg>';
+  var ICON_PAUSE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
+  var ICON_PLAY_BIG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>';
+  function renderMusic() {
+    var cur = music.id ? musicItem(music.id) : null;
+    var player = !!cur && music.view === 'player';
+    $('mu-library').hidden = player;
+    $('mu-player').hidden = !player;
+    $('hero').hidden = player && !$('tab-music').hidden;
+    $('mu-title').textContent = cur ? cur.name : 'לא מנגן';
+    $('mu-sub').textContent = cur ? cur.desc : 'בחרו הקלטה מהרשימה כדי להתחיל.';
+    $('mu-stop').hidden = !cur;
+    $('mu-open').hidden = !cur;
+    $('mu-bg').hidden = !cur;
+    var isBg = !!cur && state.sound === music.id;
+    var bgText = isBg ? 'זה צליל הרקע של התרגול' : 'קבע כצליל רקע לתרגול';
+    ['mu-bg', 'mp-bg'].forEach(function (id) { $(id).textContent = bgText; $(id).disabled = isBg; });
+    if (cur) {
+      $('mp-title').textContent = cur.name;
+      $('mp-sub').textContent = cur.desc;
+      $('mp-art').style.setProperty('--art', 'url(img/bamboo-' + (ART[cur.id] || 1) + '.jpg)');
+      $('mp-art').classList.toggle('paused', music.paused);
+      $('mp-toggle').innerHTML = music.paused ? ICON_PLAY_BIG : ICON_PAUSE;
+      $('mp-toggle').setAttribute('aria-label', music.paused ? 'המשך' : 'השהיה');
+    }
+    ['mu-sleep', 'mp-sleep'].forEach(function (cid) {
+      radio($(cid), SLEEP.map(function (n) { return { id: n }; }), state.sleep,
+        function (n) { state.sleep = n; save(); armSleep(); renderMusic(); },
+        { cls: 'chip', html: function (d) { return d.id ? d.id + ' דק׳' : 'ללא'; } });
+    });
+    $('mu-list').innerHTML = MUSIC.map(function (g) {
+      return '<h2 class="mgroup">' + g.group + '</h2><div class="mulist">' + g.items.map(function (it) {
+        var on = music.id === it.id;
+        return '<button type="button" class="mucard" data-play="' + it.id + '" aria-pressed="' + on + '">' +
+          '<span class="muplay">' + (on ? (music.paused ? ICON_PLAY : ICON_STOP) : ICON_PLAY) + '</span>' +
+          '<span class="mumain"><span class="muname">' + it.name + '</span><span class="mudesc">' + it.desc + '</span></span>' +
+        '</button>';
+      }).join('') + '</div>';
+    }).join('');
+    musicLeft();
+    updateSeek();
+  }
+  $('tab-music').addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    if (b.dataset.play) {
+      if (music.id === b.dataset.play) { music.view = 'player'; renderMusic(); window.scrollTo(0, 0); }
+      else musicPlay(b.dataset.play);
+    }
+    else if (b.id === 'mu-stop' || b.id === 'mp-stop') musicStop();
+    else if (b.id === 'mu-open') { music.view = 'player'; renderMusic(); window.scrollTo(0, 0); }
+    else if (b.id === 'mp-back') { music.view = 'list'; renderMusic(); window.scrollTo(0, 0); }
+    else if (b.id === 'mp-toggle') musicToggle();
+    else if (b.id === 'mp-prev') musicStep(-1);
+    else if (b.id === 'mp-next') musicStep(1);
+    else if ((b.id === 'mu-bg' || b.id === 'mp-bg') && music.id) { state.sound = music.id; save(); renderChoices(); renderMusic(); }
+  });
+  function applyVol(v) {
+    vol = v;
+    state.vol = vol; save();
+    $('mu-vol').value = Math.round(vol * 100);
+    $('mp-vol').value = Math.round(vol * 100);
+    if (master && ctx && !muted) master.gain.setTargetAtTime(vol, ctx.currentTime, 0.05);
+  }
+  ['mu-vol', 'mp-vol'].forEach(function (id) {
+    $(id).value = Math.round(vol * 100);
+    $(id).addEventListener('input', function () { applyVol(this.value / 100); });
+  });
+  $('mp-seek').addEventListener('input', function () {
+    var el = ambient && ambient.el;
+    music.seekHold = Date.now();
+    if (el && isFinite(el.duration) && el.duration > 0) { try { el.currentTime = this.value / 1000 * el.duration; } catch (e) {} }
+    updateSeek();
+  });
+  renderMusic();
+
+  renderStudy();
+  renderMantras();
+  setTab('practice');
+  /* Android app: a real daily notification through the Capacitor LocalNotifications plugin, which works with the app closed. */
+  function nativeNotif() {
+    try {
+      var C = window.Capacitor;
+      if (C && C.isNativePlatform && C.isNativePlatform() && C.Plugins && C.Plugins.LocalNotifications) return C.Plugins.LocalNotifications;
+    } catch (e) {}
+    return null;
+  }
+  function syncNative() {
+    var LN = nativeNotif();
+    if (!LN) return;
+    var hm = (state.remind.time || '08:00').split(':');
+    LN.cancel({ notifications: [{ id: 1 }] }).catch(function () {}).then(function () {
+      if (!state.remind.on) return;
+      return LN.requestPermissions().then(function (r) {
+        if (!r || r.display !== 'granted') return;
+        return LN.schedule({ notifications: [{ id: 1, title: 'הגיע הזמן לתרגל', body: 'כמה דקות של שקט מחכות לך.', schedule: { on: { hour: +hm[0], minute: +hm[1] }, allowWhileIdle: true } }] });
+      });
+    }).catch(function () {});
+  }
+  /* ---------- Daily reminder ---------- */
+  function remindNote() {
+    $('r-note').textContent = state.remind.on
+      ? 'התזכורת תופיע בשעה ' + state.remind.time + (nativeNotif() ? ' בכל יום, גם כשהאפליקציה סגורה.' : ' כשהדף פתוח. כדי לקבל התראה גם כשהוא סגור, אפשר להגדיר אותה כהתראה בטלפון.')
+      : 'בחרו שעה והפעילו כדי לקבל תזכורת לתרגול יומי.';
+  }
+  function checkRemind() {
+    var r = state.remind;
+    if (!r.on || S) return;
+    var now = new Date(), p = r.time.split(':');
+    var diff = now.getHours() * 60 + now.getMinutes() - (+p[0] * 60 + +p[1]);
+    if (diff < 0 || diff > 240 || r.last === key(now)) return;
+    r.last = key(now);
+    save();
+    $('banner').hidden = false;
+    try {
+      if (window.Notification && Notification.permission === 'granted') {
+        new Notification('הגיע הזמן לתרגל', { body: 'כמה דקות של שקט מחכות לך.' });
+      }
+    } catch (e) {}
+  }
+  $('r-on').checked = !!state.remind.on;
+  $('r-time').value = state.remind.time || '08:00';
+  remindNote();
+  $('r-on').addEventListener('change', function () {
+    state.remind.on = this.checked;
+    state.remind.last = '';
+    save(); remindNote();
+    if (this.checked) {
+      try { if (window.Notification && Notification.permission === 'default') Notification.requestPermission(); } catch (e) {}
+      checkRemind();
+    }
+  });
+  $('r-time').addEventListener('change', function () {
+    state.remind.time = this.value || '08:00';
+    state.remind.last = '';
+    save(); remindNote(); checkRemind();
+  });
+  $('b-go').addEventListener('click', function () { $('banner').hidden = true; setTab('practice'); begin(); });
+  $('b-x').addEventListener('click', function () { $('banner').hidden = true; });
+  setInterval(checkRemind, 20000);
+  $('r-on').addEventListener('change', syncNative);
+  $('r-time').addEventListener('change', syncNative);
+  syncNative();
+  document.addEventListener('visibilitychange', checkRemind);
+  checkRemind();
+  renderHome();
+})();
+</script>
+</body>
+</html>
