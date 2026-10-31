@@ -313,6 +313,42 @@ section { margin-bottom: 26px; }
 .mp-extra h2 { font-size: 16px; margin: 0; }
 .mp-extra .note { margin: 0; text-align: start; }
 #mp-sleep .chip { min-width: 0; padding: 8px 13px; }
+:root[data-land="mountains"]{--bg:#eef1f4;--bg-end:#e2e8ee;--surface:#f9fbfc;--fg:#1d2733;--muted:#5a6877;--line:#d5dde5;--accent:#3f5d78;--accent-fg:#f7fafc;--sel-bg:#3f5d78;--sel-fg:#f4f8fb;--sel-muted:rgba(244,248,251,0.82);--orb1:#8fb0cc;--orb2:#dbe7f1;--ember:#7a8fa6;--shadow:0 8px 24px rgba(30,50,70,0.10);}
+@media (prefers-color-scheme: dark){:root[data-land="mountains"]:not([data-theme="light"]){--bg:#0f151b;--bg-end:#0f151b;--surface:#18212a;--fg:#e6ecf2;--muted:#9aa9b8;--line:#2a3745;--accent:#a9c6e0;--accent-fg:#0f2233;--sel-bg:#2f4b66;--sel-fg:#f1f6fa;--sel-muted:rgba(241,246,250,0.8);--orb1:#5b86ab;--orb2:#263c50;--ember:#9db7d0;--shadow:0 8px 24px rgba(0,0,0,0.38);color-scheme:dark;}}
+:root[data-land="mountains"][data-theme="dark"]{--bg:#0f151b;--bg-end:#0f151b;--surface:#18212a;--fg:#e6ecf2;--muted:#9aa9b8;--line:#2a3745;--accent:#a9c6e0;--accent-fg:#0f2233;--sel-bg:#2f4b66;--sel-fg:#f1f6fa;--sel-muted:rgba(241,246,250,0.8);--orb1:#5b86ab;--orb2:#263c50;--ember:#9db7d0;--shadow:0 8px 24px rgba(0,0,0,0.38);color-scheme:dark;}
+:root[data-land="sea"]{--bg:#edf5f4;--bg-end:#dfeceb;--surface:#f8fcfb;--fg:#16292c;--muted:#547175;--line:#d0e1e1;--accent:#2a7480;--accent-fg:#f4fcfd;--sel-bg:#2a7480;--sel-fg:#f2fbfc;--sel-muted:rgba(242,251,252,0.82);--orb1:#79bdc9;--orb2:#d3eaee;--ember:#5d9aa6;--shadow:0 8px 24px rgba(20,70,80,0.10);}
+@media (prefers-color-scheme: dark){:root[data-land="sea"]:not([data-theme="light"]){--bg:#0c1719;--bg-end:#0c1719;--surface:#152529;--fg:#e3f0f1;--muted:#94adb1;--line:#26393d;--accent:#8fd0d8;--accent-fg:#0b2327;--sel-bg:#27616b;--sel-fg:#effafb;--sel-muted:rgba(239,250,251,0.8);--orb1:#4a98a6;--orb2:#1f4249;--ember:#86c2cb;--shadow:0 8px 24px rgba(0,0,0,0.38);color-scheme:dark;}}
+:root[data-land="sea"][data-theme="dark"]{--bg:#0c1719;--bg-end:#0c1719;--surface:#152529;--fg:#e3f0f1;--muted:#94adb1;--line:#26393d;--accent:#8fd0d8;--accent-fg:#0b2327;--sel-bg:#27616b;--sel-fg:#effafb;--sel-muted:rgba(239,250,251,0.8);--orb1:#4a98a6;--orb2:#1f4249;--ember:#86c2cb;--shadow:0 8px 24px rgba(0,0,0,0.38);color-scheme:dark;}
+:root[data-land="desert"]{--bg:#f6ecdd;--bg-end:#efdfc6;--surface:#fdf8ef;--fg:#33261a;--muted:#75634f;--line:#e6d5b8;--accent:#a8602f;--accent-fg:#fffaf2;--sel-bg:#a8602f;--sel-fg:#fff8ee;--sel-muted:rgba(255,248,238,0.84);--orb1:#e0a56b;--orb2:#f6e2bf;--ember:#c98650;--shadow:0 8px 24px rgba(90,55,20,0.11);}
+@media (prefers-color-scheme: dark){:root[data-land="desert"]:not([data-theme="light"]){--bg:#1b130c;--bg-end:#1b130c;--surface:#271c13;--fg:#f2e6d4;--muted:#b8a58c;--line:#3b2d1f;--accent:#e8b183;--accent-fg:#2d1a0c;--sel-bg:#7a4a28;--sel-fg:#fcf1e2;--sel-muted:rgba(252,241,226,0.8);--orb1:#b87a47;--orb2:#4a3220;--ember:#e0b078;--shadow:0 8px 24px rgba(0,0,0,0.4);color-scheme:dark;}}
+:root[data-land="desert"][data-theme="dark"]{--bg:#1b130c;--bg-end:#1b130c;--surface:#271c13;--fg:#f2e6d4;--muted:#b8a58c;--line:#3b2d1f;--accent:#e8b183;--accent-fg:#2d1a0c;--sel-bg:#7a4a28;--sel-fg:#fcf1e2;--sel-muted:rgba(252,241,226,0.8);--orb1:#b87a47;--orb2:#4a3220;--ember:#e0b078;--shadow:0 8px 24px rgba(0,0,0,0.4);color-scheme:dark;}
+:root[data-land="sunset"]{--bg:#f8ece8;--bg-end:#f1dedb;--surface:#fff8f5;--fg:#35232b;--muted:#7a6068;--line:#ecd3d0;--accent:#a14d62;--accent-fg:#fff6f4;--sel-bg:#a14d62;--sel-fg:#fff5f3;--sel-muted:rgba(255,245,243,0.84);--orb1:#e59a9a;--orb2:#f7dcd6;--ember:#c9788a;--shadow:0 8px 24px rgba(90,40,50,0.11);}
+@media (prefers-color-scheme: dark){:root[data-land="sunset"]:not([data-theme="light"]){--bg:#1a1116;--bg-end:#1a1116;--surface:#271a21;--fg:#f3e6ea;--muted:#bba3ab;--line:#3b2832;--accent:#eaa6b6;--accent-fg:#331320;--sel-bg:#7d3a4e;--sel-fg:#fcf0f2;--sel-muted:rgba(252,240,242,0.8);--orb1:#b4607a;--orb2:#4a2634;--ember:#e7a0b0;--shadow:0 8px 24px rgba(0,0,0,0.42);color-scheme:dark;}}
+:root[data-land="sunset"][data-theme="dark"]{--bg:#1a1116;--bg-end:#1a1116;--surface:#271a21;--fg:#f3e6ea;--muted:#bba3ab;--line:#3b2832;--accent:#eaa6b6;--accent-fg:#331320;--sel-bg:#7d3a4e;--sel-fg:#fcf0f2;--sel-muted:rgba(252,240,242,0.8);--orb1:#b4607a;--orb2:#4a2634;--ember:#e7a0b0;--shadow:0 8px 24px rgba(0,0,0,0.42);color-scheme:dark;}
+
+/* Landscape themes: pictures are drawn, not photographed */
+:root[data-land] .hero::before, :root[data-land] .mp-art { filter: none; }
+@media (prefers-color-scheme: dark) { :root[data-land]:not([data-theme="light"]) .hero::before, :root[data-land]:not([data-theme="light"]) .mp-art { filter: brightness(0.74); } }
+:root[data-land][data-theme="dark"] .hero::before, :root[data-land][data-theme="dark"] .mp-art { filter: brightness(0.74); }
+:root[dir="ltr"] .hero::after { background: linear-gradient(to right, color-mix(in srgb, var(--surface) 92%, transparent) 25%, transparent 88%); }
+:root[dir="ltr"] .mp-back svg { transform: scaleX(-1); }
+.chip { max-width: 100%; overflow-wrap: anywhere; }
+.top { position: relative; }
+.gear { position: absolute; inset-block-start: 2px; inset-inline-end: 0; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--fg); padding: 0; }
+.gear svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+#settings .st-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+#settings h1 { font-size: 34px; line-height: 1.1; }
+.lands { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.land { padding: 0; border-radius: 22px; overflow: hidden; border: 2px solid var(--line); background: var(--surface); box-shadow: var(--shadow); text-align: start; }
+.land .lthumb { display: block; aspect-ratio: 5 / 3; background-size: cover; background-position: center; }
+.land .lname { display: block; padding: 8px 14px 10px; font-weight: 700; }
+.land[aria-checked="true"] { border-color: var(--accent); outline: 2px solid var(--accent); outline-offset: 1px; }
+.land[aria-checked="true"] .lname::after { content: " ✓"; color: var(--accent); }
+.muwrap { position: relative; }
+.mucard.u { padding-inline-end: 56px; }
+.mudel { position: absolute; inset-block-start: 50%; inset-inline-end: 12px; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 50%; border: 0; background: transparent; color: inherit; display: grid; place-items: center; opacity: 0.7; padding: 0; }
+.mudel svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.mu-add { width: 100%; }
 @media (prefers-reduced-motion: reduce) { .cue { transition: none; } .mp-art::after { animation: none; } }
 </style>
 </head>
@@ -323,6 +359,7 @@ section { margin-bottom: 26px; }
   <div id="home">
     <header class="top">
       <span class="eyebrow" id="dateline"></span>
+      <button class="gear" id="gear" type="button" aria-label="הגדרות"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
       <h1 id="greeting">שלום</h1>
       <p class="top-sub">רגע של שקט, יום בהיר יותר.</p>
     </header>
@@ -423,6 +460,11 @@ section { margin-bottom: 26px; }
         <p class="note" id="mu-left"></p>
       </section>
       <div id="mu-list"></div>
+      <section>
+        <button class="ghost mu-add" id="mu-add" type="button">הוספת שירים</button>
+        <input type="file" id="mu-file" accept="audio/*,.mp3,.m4a,.aac,.wav,.ogg,.flac,.opus" multiple hidden>
+        <p class="note" id="mu-add-note">בחרו קבצי שמע מהמכשיר. הם נשמרים באפליקציה.</p>
+      </section>
       </div>
 
       <div id="mu-player" hidden>
@@ -448,6 +490,25 @@ section { margin-bottom: 26px; }
         </div>
       </div>
     </div>
+  </div>
+
+  <div id="settings" hidden>
+    <div class="st-head"><button class="ghost" id="st-back" type="button">חזרה</button></div>
+    <h1>הגדרות</h1>
+    <section style="margin-top:18px">
+      <h2>מראה</h2>
+      <div class="chips" id="st-mode" role="radiogroup" aria-label="מראה"></div>
+    </section>
+    <section>
+      <h2>ערכת נושא</h2>
+      <p class="note" style="text-align:start;margin-top:-6px">בחרו נוף</p>
+      <div class="lands" id="st-land" role="radiogroup" aria-label="ערכת נושא"></div>
+    </section>
+    <section>
+      <h2>שפה</h2>
+      <div class="chips" id="st-lang" role="radiogroup" aria-label="שפה"></div>
+      <p class="note" style="text-align:start">החלפת השפה טוענת את האפליקציה מחדש.</p>
+    </section>
   </div>
 
   <div id="session" class="session" hidden>
@@ -587,7 +648,11 @@ section { margin-bottom: 26px; }
   if (!Array.isArray(state.sessions)) state.sessions = [];
   if (!state.study || typeof state.study !== 'object') state.study = {};
   if (typeof state.japa !== 'number') state.japa = 0;
-  if (['off', 'wind', 'rain', 'india', 'yaman', 'bhairavi', 'santoor', 'track1', 'track2', 'track4', 'track5', 'track6'].indexOf(state.sound) < 0) state.sound = 'india';
+  if (['off', 'wind', 'rain', 'india', 'yaman', 'bhairavi', 'santoor', 'track1', 'track2', 'track4', 'track5', 'track6'].indexOf(state.sound) < 0 && !/^u_/.test(state.sound)) state.sound = 'india';
+  if (['auto', 'light', 'dark'].indexOf(state.mode) < 0) state.mode = 'auto';
+  if (['bamboo', 'mountains', 'sea', 'desert', 'sunset'].indexOf(state.land) < 0) state.land = 'bamboo';
+  if (state.lang !== 'en') state.lang = 'he';
+  var HOST_THEME = document.documentElement.getAttribute('data-theme');
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
 
   function $(id) { return document.getElementById(id); }
@@ -655,7 +720,7 @@ section { margin-bottom: 26px; }
   }
   function renderHome() {
     $('greeting').textContent = greeting();
-    $('dateline').textContent = new Date().toLocaleDateString('he-IL', { weekday: 'long', day: 'numeric', month: 'long' });
+    $('dateline').textContent = new Date().toLocaleDateString(state.lang === 'en' ? 'en-US' : 'he-IL', { weekday: 'long', day: 'numeric', month: 'long' });
     renderChoices();
   }
 
@@ -1244,13 +1309,14 @@ section { margin-bottom: 26px; }
   }
 
   function show(id) {
-    ['home', 'session', 'done'].forEach(function (n) { $(n).hidden = n !== id; });
+    ['home', 'session', 'done', 'settings'].forEach(function (n) { $(n).hidden = n !== id; });
     window.scrollTo(0, 0);
   }
 
   var ambientTimer = 0;
   function begin(pid) {
     musicStop();
+    if (/^u_/.test(state.sound) && !TRACKS[state.sound]) state.sound = 'india';
     pid = typeof pid === 'string' ? pid : state.practice;
     var practice = PRACTICES.filter(function (p) { return p.id === pid; })[0] || PRACTICES[0];
     S = { practice: practice, total: state.dur * 60, elapsed: 0, last: performance.now(), running: true, cueIdx: -1 };
@@ -1392,6 +1458,7 @@ section { margin-bottom: 26px; }
       $('t-' + n).setAttribute('aria-selected', String(n === id));
     });
     $('hero').setAttribute('data-hero', id);
+    applyHero();
     $('hero-t').textContent = HERO[id].t;
     $('hero-p').textContent = HERO[id].p;
     $('hero-go').hidden = id !== 'practice';
@@ -1686,7 +1753,7 @@ section { margin-bottom: 26px; }
     if (cur) {
       $('mp-title').textContent = cur.name;
       $('mp-sub').textContent = cur.desc;
-      $('mp-art').style.setProperty('--art', 'url(img/bamboo-' + (ART[cur.id] || 1) + '.jpg)');
+      $('mp-art').style.setProperty('--art', artFor(cur.id));
       $('mp-art').classList.toggle('paused', music.paused);
       $('mp-toggle').innerHTML = music.paused ? ICON_PLAY_BIG : ICON_PAUSE;
       $('mp-toggle').setAttribute('aria-label', music.paused ? 'המשך' : 'השהיה');
@@ -1696,13 +1763,15 @@ section { margin-bottom: 26px; }
         function (n) { state.sleep = n; save(); armSleep(); renderMusic(); },
         { cls: 'chip', html: function (d) { return d.id ? d.id + ' דק׳' : 'ללא'; } });
     });
-    $('mu-list').innerHTML = MUSIC.map(function (g) {
+    $('mu-list').innerHTML = MUSIC.filter(function (g) { return g.items.length; }).map(function (g) {
       return '<h2 class="mgroup">' + g.group + '</h2><div class="mulist">' + g.items.map(function (it) {
         var on = music.id === it.id;
-        return '<button type="button" class="mucard" data-play="' + it.id + '" aria-pressed="' + on + '">' +
+        var card = '<button type="button" class="mucard' + (it.user ? ' u' : '') + '" data-play="' + it.id + '" aria-pressed="' + on + '">' +
           '<span class="muplay">' + (on ? (music.paused ? ICON_PLAY : ICON_STOP) : ICON_PLAY) + '</span>' +
-          '<span class="mumain"><span class="muname">' + it.name + '</span><span class="mudesc">' + it.desc + '</span></span>' +
+          '<span class="mumain"><span class="muname">' + esc(it.name) + '</span><span class="mudesc">' + esc(it.desc) + '</span></span>' +
         '</button>';
+        if (!it.user) return card;
+        return '<div class="muwrap">' + card + '<button type="button" class="mudel" data-del="' + it.id + '" aria-label="מחיקת השיר"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>';
       }).join('') + '</div>';
     }).join('');
     musicLeft();
@@ -1741,6 +1810,231 @@ section { margin-bottom: 26px; }
     updateSeek();
   });
   renderMusic();
+
+
+  /* ---------- Look: appearance, landscape themes, language ---------- */
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function rng(seed) { var x = (seed >>> 0) || 1; return function () { x = (Math.imul(x, 1664525) + 1013904223) >>> 0; return x / 4294967296; }; }
+  var LANDS = ['bamboo', 'mountains', 'sea', 'desert', 'sunset'];
+  var SCENE = {
+    mountains: { sky: ['#cfdce9', '#f3efe6'], sun: { x: 0.74, y: 0.30, r: 0.07, c: '#fff7e6' }, mist: true,
+      layers: [{ c: '#c4d2df', y: 0.50, a: 0.18, f: 2.2, j: 1 }, { c: '#a3b7c9', y: 0.62, a: 0.20, f: 2.8, j: 1 }, { c: '#7d95ab', y: 0.76, a: 0.22, f: 3.4, j: 1 }, { c: '#566f86', y: 0.93, a: 0.22, f: 4.2, j: 1 }] },
+    sea: { sky: ['#bfe3ec', '#fbf1dc'], sun: { x: 0.28, y: 0.34, r: 0.08, c: '#fffbe8' }, water: { y: 0.57, c1: '#79bdc9', c2: '#2c7c90' }, waves: true,
+      layers: [{ c: '#a9cfd8', y: 0.575, a: 0.05, f: 1.5, j: 0 }] },
+    desert: { sky: ['#f6d3a1', '#fdf0d6'], sun: { x: 0.72, y: 0.30, r: 0.10, c: '#fff4d2' },
+      layers: [{ c: '#ebc58f', y: 0.60, a: 0.10, f: 1.6, j: 0 }, { c: '#dea56b', y: 0.74, a: 0.14, f: 1.9, j: 0 }, { c: '#c98650', y: 0.88, a: 0.16, f: 2.2, j: 0 }, { c: '#a96a3c', y: 1.02, a: 0.18, f: 2.6, j: 0 }] },
+    sunset: { sky: ['#8f7aa8', '#e9908a', '#fbd8a6'], sun: { x: 0.5, y: 0.60, r: 0.10, c: '#fff0c8' }, water: { y: 0.78, c1: '#e7a58f', c2: '#8f6a88' }, reflect: true,
+      layers: [{ c: '#6d5a86', y: 0.66, a: 0.10, f: 2.4, j: 1 }, { c: '#4d3f66', y: 0.80, a: 0.12, f: 3, j: 1 }] }
+  };
+  function ridge(r, L) {
+    var ph = [r() * 6.28, r() * 6.28, r() * 6.28], N = 56, pts = [], i, x, n;
+    for (i = 0; i <= N; i++) {
+      x = i / N;
+      if (L.j) n = 1 - (Math.abs(Math.sin(x * L.f * 3.1 + ph[0])) * 0.6 + Math.abs(Math.sin(x * L.f * 7.3 + ph[1])) * 0.3 + Math.abs(Math.sin(x * L.f * 13 + ph[2])) * 0.1);
+      else n = (Math.sin(x * L.f * 2 + ph[0]) + Math.sin(x * L.f * 5 + ph[1]) * 0.4 + 1.4) / 2.8;
+      pts.push((x * 400).toFixed(1) + ' ' + ((L.y - L.a * n) * 240).toFixed(1));
+    }
+    return 'M0 245L' + pts.join('L') + 'L400 245Z';
+  }
+  var sceneCache = {};
+  function sceneUri(land, variant) {
+    var ck = land + variant;
+    if (sceneCache[ck]) return sceneCache[ck];
+    var C = SCENE[land], r = rng(7919 * (variant + 3) + land.length * 131 + land.charCodeAt(0));
+    var sx = Math.min(0.88, Math.max(0.12, C.sun.x + ((variant % 3) - 1) * 0.12));
+    var sky = '<linearGradient id="a" x1="0" y1="0" x2="0" y2="1">' + C.sky.map(function (c, i) { return '<stop offset="' + (i / (C.sky.length - 1)).toFixed(2) + '" stop-color="' + c + '"/>'; }).join('') + '</linearGradient>';
+    var g = '<defs>' + sky + '<radialGradient id="h"><stop offset="0" stop-color="' + C.sun.c + '" stop-opacity=".8"/><stop offset="1" stop-color="' + C.sun.c + '" stop-opacity="0"/></radialGradient>' +
+      (C.water ? '<linearGradient id="w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + C.water.c1 + '"/><stop offset="1" stop-color="' + C.water.c2 + '"/></linearGradient>' : '') +
+      '<linearGradient id="m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".5"/></linearGradient></defs>';
+    var out = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice">' + g + '<rect width="400" height="240" fill="url(#a)"/>' +
+      '<circle cx="' + (sx * 400).toFixed(0) + '" cy="' + (C.sun.y * 240).toFixed(0) + '" r="' + (C.sun.r * 600).toFixed(0) + '" fill="url(#h)"/>' +
+      '<circle cx="' + (sx * 400).toFixed(0) + '" cy="' + (C.sun.y * 240).toFixed(0) + '" r="' + (C.sun.r * 240).toFixed(0) + '" fill="' + C.sun.c + '"/>';
+    C.layers.forEach(function (L, i) {
+      out += '<path d="' + ridge(r, L) + '" fill="' + L.c + '"/>';
+      if (C.mist && i < C.layers.length - 1) out += '<rect x="0" y="' + ((L.y - 0.02) * 240).toFixed(0) + '" width="400" height="' + (0.2 * 240).toFixed(0) + '" fill="url(#m)"/>';
+    });
+    if (C.water) {
+      var wy = C.water.y * 240;
+      out += '<rect x="0" y="' + wy.toFixed(0) + '" width="400" height="' + (245 - wy).toFixed(0) + '" fill="url(#w)"/>';
+      if (C.reflect) {
+        for (var k = 0; k < 7; k++) out += '<rect x="' + (sx * 400 - 38 + k * 3).toFixed(0) + '" y="' + (wy + 5 + k * 9).toFixed(0) + '" width="' + (76 - k * 6) + '" height="3" rx="1.5" fill="' + C.sun.c + '" opacity="' + (0.7 - k * 0.08).toFixed(2) + '"/>';
+      }
+      if (C.waves) {
+        for (var q = 0; q < 9; q++) { var wx = r() * 360, wyy = wy + 10 + q * 12 + r() * 4; out += '<path d="M' + wx.toFixed(0) + ' ' + wyy.toFixed(0) + 'q10 -4 20 0t20 0" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.6" stroke-linecap="round"/>'; }
+        out += '<ellipse cx="' + (sx * 400).toFixed(0) + '" cy="' + (wy + 22).toFixed(0) + '" rx="46" ry="5" fill="' + C.sun.c + '" opacity=".4"/>';
+      }
+    }
+    out += '</svg>';
+    return (sceneCache[ck] = 'data:image/svg+xml,' + encodeURIComponent(out));
+  }
+  function sceneUrl(land, variant) { return 'url("' + sceneUri(land, variant) + '")'; }
+  var ART_IDX = { track1: 0, track2: 2, track4: 3, track5: 4, track6: 1 };
+  function artFor(id) {
+    var n = ART_IDX[id];
+    if (n === undefined) { var h = 0; for (var i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) >>> 0; n = h % 5; }
+    if (state.land === 'bamboo') return 'url(img/bamboo-' + (n + 1) + '.jpg)';
+    return sceneUrl(state.land, n);
+  }
+  function applyHero() {
+    var h = $('hero');
+    if (state.land === 'bamboo') { h.style.removeProperty('--hero-img'); h.style.removeProperty('--hero-flip'); return; }
+    var idx = TABS.indexOf(h.getAttribute('data-hero'));
+    h.style.setProperty('--hero-img', sceneUrl(state.land, idx < 0 ? 0 : idx));
+    h.style.setProperty('--hero-flip', 'none');
+  }
+  function applyLook() {
+    var r = document.documentElement, en = state.lang === 'en';
+    if (state.mode === 'auto') { if (HOST_THEME) r.setAttribute('data-theme', HOST_THEME); else r.removeAttribute('data-theme'); }
+    else r.setAttribute('data-theme', state.mode);
+    if (state.land === 'bamboo') r.removeAttribute('data-land'); else r.setAttribute('data-land', state.land);
+    r.lang = en ? 'en' : 'he'; r.dir = en ? 'ltr' : 'rtl';
+    var m = document.querySelector('main.wrap');
+    if (m) { m.dir = r.dir; m.lang = r.lang; }
+    applyHero();
+  }
+  applyLook();
+
+  /* ---------- Settings screen ---------- */
+  var LAND_NAMES = { bamboo: 'במבוק', mountains: 'הרים', sea: 'ים', desert: 'מדבר', sunset: 'שקיעה' };
+  function renderSettings() {
+    radio($('st-mode'), [{ id: 'auto', l: 'אוטומטי' }, { id: 'light', l: 'בהיר' }, { id: 'dark', l: 'כהה' }], state.mode,
+      function (v) { state.mode = v; save(); applyLook(); renderSettings(); }, { cls: 'chip', html: function (d) { return d.l; } });
+    radio($('st-land'), LANDS.map(function (n) { return { id: n }; }), state.land,
+      function (v) { state.land = v; save(); applyLook(); renderSettings(); if (music.id) renderMusic(); },
+      { cls: 'land', html: function (d) {
+        var thumb = d.id === 'bamboo' ? 'url(img/bamboo-1.jpg)' : sceneUrl(d.id, 0);
+        return '<span class="lthumb" style="background-image:' + thumb.replace(/"/g, '&quot;') + (d.id === 'bamboo' ? ';filter:sepia(.85) saturate(.9) hue-rotate(-8deg)' : '') + '"></span><span class="lname">' + LAND_NAMES[d.id] + '</span>';
+      } });
+    radio($('st-lang'), [{ id: 'he', l: 'עברית' }, { id: 'en', l: 'English' }], state.lang,
+      function (v) { if (v === state.lang) return; state.lang = v; save(); try { location.reload(); } catch (e) {} },
+      { cls: 'chip', html: function (d) { return d.l; } });
+  }
+  $('gear').addEventListener('click', function () { renderSettings(); show('settings'); });
+  $('st-back').addEventListener('click', function () { show('home'); renderHome(); });
+
+  /* ---------- My songs: kept on the device in IndexedDB ---------- */
+  var songDB = null;
+  var userGroup = { group: 'השירים שלי', user: true, items: [] };
+  MUSIC.push(userGroup);
+  function songOpen(cb) {
+    try {
+      var q = indexedDB.open('pinat-songs', 1);
+      q.onupgradeneeded = function () { q.result.createObjectStore('songs', { keyPath: 'id' }); };
+      q.onsuccess = function () { cb(q.result); };
+      q.onerror = function () { cb(null); };
+      q.onblocked = function () { cb(null); };
+    } catch (e) { cb(null); }
+  }
+  function songReg(rec) {
+    var url;
+    try { url = URL.createObjectURL(rec.blob); } catch (e) { return; }
+    TRACKS[rec.id] = url;
+    userGroup.items.push({ id: rec.id, name: rec.name, desc: 'השיר שלי', user: true });
+    SOUNDS.push([rec.id, rec.name]);
+  }
+  function songsRefresh() { renderChoices(); renderMusic(); }
+  function songAdd(files) {
+    var list = Array.prototype.filter.call(files || [], function (f) { return /^audio\//.test(f.type) || /\.(mp3|m4a|aac|wav|ogg|oga|flac|opus|webm)$/i.test(f.name); });
+    if (!list.length) { $('mu-add-note').textContent = 'לא נמצאו קבצי שמע.'; return; }
+    $('mu-add-note').textContent = songDB ? 'בחרו קבצי שמע מהמכשיר. הם נשמרים באפליקציה.' : 'השירים יישמרו רק עד סגירת הדף.';
+    list.forEach(function (f) {
+      var rec = { id: 'u_' + Date.now().toString(36) + Math.floor(Math.random() * 1e6).toString(36), name: f.name.replace(/\.[^.]+$/, ''), blob: f };
+      songReg(rec);
+      if (songDB) { try { songDB.transaction('songs', 'readwrite').objectStore('songs').put(rec); } catch (e) {} }
+    });
+    songsRefresh();
+  }
+  function songDel(id) {
+    if (music.id === id) musicStop();
+    if (state.sound === id) { state.sound = 'india'; save(); }
+    try { URL.revokeObjectURL(TRACKS[id]); } catch (e) {}
+    delete TRACKS[id];
+    userGroup.items = userGroup.items.filter(function (x) { return x.id !== id; });
+    SOUNDS = SOUNDS.filter(function (x) { return x[0] !== id; });
+    if (songDB) { try { songDB.transaction('songs', 'readwrite').objectStore('songs').delete(id); } catch (e) {} }
+    songsRefresh();
+  }
+  $('mu-add').addEventListener('click', function () { $('mu-file').click(); });
+  $('mu-file').addEventListener('change', function () { songAdd(this.files); this.value = ''; });
+  $('tab-music').addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (b && b.dataset.del) songDel(b.dataset.del);
+  });
+  songOpen(function (db) {
+    songDB = db;
+    if (!db) { $('mu-add-note').textContent = 'השירים יישמרו רק עד סגירת הדף.'; return; }
+    try {
+      var rq = db.transaction('songs', 'readonly').objectStore('songs').getAll();
+      rq.onsuccess = function () {
+        (rq.result || []).sort(function (a, b) { return a.id < b.id ? -1 : 1; }).forEach(songReg);
+        songsRefresh();
+      };
+    } catch (e) {}
+  });
+
+  /* ---------- Language: English is applied by translating the screen as it is drawn ---------- */
+  var EN = {"דק׳": "min", "שבו 3 דקות עם השאלה": "Sit 3 minutes with the question", "חזרה לשיעור של היום": "Back to today's lesson", "הוסיפו חזרה אחת": "Add one repetition", "שאלה להתבוננות": "A question to reflect on", "מספר חזרות בסבב": "Repetitions per round", "איפוס": "Reset", "שיעור קודם": "Previous lesson", "שיעור הבא": "Next lesson", "בחרו מנטרה": "Choose a mantra", "איך מתרגלים": "How to practice", "למה": "Why", "זהירות:": "Caution:", "ספירת ג׳אפה": "Japa counter", "ג׳אפה: חזרה על מנטרה": "Japa: repeating a mantra", "שיעור": "Lesson", "מקור:": "Source:", "א": "S", "אבחנה": "Discernment", "אדוויתה": "Advaita", "אדיאסה": "Adhyāsa", "אהם ברהמאסמי": "Aham Brahmāsmi", "אהנקרה": "Ahaṅkāra", "אוג׳איי": "Ujjayi", "אום": "Om", "אום גם גנפטיי": "Om Gaṃ Gaṇapataye", "אום נמה שיוויה": "Om Namah Shivaya", "אום שנטי": "Om Shanti", "אושר ללא סיבה": "Happiness without a cause", "אחר כך": "Later", "אחרי כל סבב, שאיפה עמוקה והחזקה נוחה.": "After each round, a deep inhale and a comfortable hold.", "אטמה בודהה, המיוחס לשנקרה": "Ātma Bodha, attributed to Śaṅkara", "אטמה ויצ׳ארה": "Ātma vicāra", "אטמן": "Ātman", "אי-היאחזות": "Non-attachment", "איזה תיאור של עצמך תוכל לנסח כך: “יש עצב”, במקום “אני עצוב”?": "What description of yourself could you phrase as “there is sadness” instead of “I am sad”?", "איזו הפרדה בין “אני” לבין “העולם” נראית לך מובנת מאליה?": "What separation between “I” and “the world” seems obvious to you?", "איזו פעולה היום תוכל לעשות בלי לדאוג איך תתקבל?": "What action could you take today without worrying how it will be received?", "איזו שאלה עדיין לא נפתרה לך, ולמי תוכל לשאול אותה?": "Which question is still unresolved for you, and whom could you ask?", "איך היית פועל אם לא היית צריך להגן על דימוי עצמי?": "How would you act if you did not need to protect a self-image?", "אין התוויות מיוחדות. אם מופיעה סחרחורת, חזרו לנשימה רגילה.": "No special contraindications. If dizziness appears, return to normal breathing.", "אל תכריחו את השאיפה.": "Do not force the inhale.", "אל תכריחו. נשימה מלאה אך רכה.": "Do not force it. A full breath, yet soft.", "אל תמהרו. תנו להברה להתארך עד סוף הנשיפה.": "Do not rush. Let the syllable stretch to the end of the exhale.", "אל תשאפו בכוח: השאיפה חוזרת מעצמה כשהבטן משתחררת.": "Do not inhale by force: the inhale returns by itself as the belly releases.", "אם הגרון יבש או כואב, הפחיתו את הכיווץ. כשהצליל נעשה מאומץ, עצרו.": "If the throat is dry or sore, ease the constriction. If the sound becomes strained, stop.", "אם הצליל נעשה חד, הרפו אותו.": "If the sound becomes sharp, soften it.", "אם מופיעה סחרחורת, הפסיקו.": "If dizziness appears, stop.", "אם מתעורר מתח, קצרו את ההחזקה.": "If tension arises, shorten the hold.", "אם מתעייפת היד, הורידו אותה ונשמו רגיל.": "If the hand tires, lower it and breathe normally.", "אנו מהרהרים באור האלוהי של השמש. שיעורר את ההבנה שלנו.": "We meditate on the divine light of the sun. May it awaken our understanding.", "אנחנו אומרים “אני עצוב”, “אני עייף”, “אני מצליח”, כאילו התכונות של הגוף והנפש שייכות למתבונן. שנקרה קורא לזה אדיאסה, הדבקה של דבר אחד על דבר אחר. ההבחנה בין השניים היא תחילת השחרור.": "We say “I am sad,” “I am tired,” “I am successful,” as if the qualities of body and mind belonged to the observer. Śaṅkara calls this adhyāsa, superimposing one thing onto another. Telling the two apart is the beginning of liberation.", "אני ברהמן": "I am Brahman", "אני ברהמן. העצמי שבי הוא המציאות האחת.": "I am Brahman. The Self within me is the one reality.", "אני הוא. אומרים בלב “סו” בשאיפה ו“הם” בנשיפה, בלי קול.": "I am That. Silently say “so” on the inhale and “ham” on the exhale, without sound.", "אננדה": "Ānanda", "אסתו מה סדגמאיה": "Asato mā sad gamaya", "אפשר להניח את האגודלים על האוזניים ולהשאיר את האצבעות על המצח.": "You can rest your thumbs on your ears and leave your fingers on your forehead.", "אפשרו לצלעות להיפתח לצדדים.": "Let the ribs open to the sides.", "ארבע ספירות לכל שלב. מארגנת את הראש לפני משימה.": "Four counts for each phase. Organizes the mind before a task.", "ב": "M", "באיזו מעטפה אתה נמצא עכשיו, ומי שם לב לכך?": "Which sheath are you in right now, and who notices it?", "בבהגווד גיטה קרישנה אומר לארג׳ונה שהזכות שלו היא על הפעולה ולא על תוצאותיה. בגישה האדוויטית פעולה שאינה תלויה בתוצאה מכינה את הנפש לידע. עושים כמיטב היכולת ומרפים מהתוצאה.": "In the Bhagavad Gītā, Krishna tells Arjuna that his right is to the action, not to its results. In the Advaita view, action that does not depend on outcome prepares the mind for knowledge. Do your best and let go of the result.", "בהאת׳ה יוגה פרדיפיקה מונה אותה בין טכניקות הניקוי. מעוררת וממריצה, ומתאימה לבוקר.": "The Haṭha Yoga Pradīpikā counts it among the cleansing techniques. Stimulating and energizing, suited to the morning.", "בהגווד גיטה 2.47": "Bhagavad Gītā 2.47", "בהסטריקה": "Bhastrikā", "בהרמרי": "Bhrāmarī", "בוודאנטה האדוויטית העצמי האמיתי, אטמן, אינו הגוף ואינו המחשבות. הוא המודעות שבה הכול מתגלה. תחושות, רגשות ומחשבות באים והולכים, והמודעות שמבחינה בהם נשארת.": "In Advaita Vedānta, the true Self, Ātman, is neither the body nor the thoughts. It is the awareness in which everything appears. Sensations, feelings and thoughts come and go, and the awareness that notices them remains.", "בוקר טוב": "Good morning", "בחרו הקלטה מהרשימה כדי להתחיל.": "Choose a recording from the list to begin.", "בחרו טכניקה": "Choose a technique", "בחרו שעה והפעילו כדי לקבל תזכורת לתרגול יומי.": "Choose a time and turn it on to get a daily practice reminder.", "בחרו תרגול": "Choose a practice", "בינוני": "Intermediate", "בכל טכניקה תופיע הנחיה על המסך, והצליל מתחיל רק אחרי לחיצה על התחלה.": "Each technique comes with on-screen guidance, and the sound starts only after you tap Start.", "בלחץ דם גבוה, מחלות לב או הריון, בלי החזקה ובהתייעצות. אם האף סתום, נשמו בלי לסגור.": "With high blood pressure, heart conditions or pregnancy, practice without holds and consult a professional. If the nose is blocked, breathe without closing it.", "בלי הנחיה. רק טיימר ועיגול שפועם לאט.": "No guidance. Just a timer and a slowly pulsing circle.", "במסורת היא נחשבת מקררת, ומתאימה לימים חמים או לרגעים של חום פנימי ועצבנות.": "In tradition it is considered cooling, suited to hot days or moments of inner heat and irritation.", "במסורת היוגה היא “ניקוי הערוצים” (נאדי). רבים מדווחים על רוגע וקשב מחודד אחריה.": "In the yoga tradition it is the “cleansing of the channels” (nāḍī). Many report calm and sharpened attention afterwards.", "במשפט מהצ׳נדוגיה אופנישד אב מלמד את בנו שווטקטו שמהותו היא המהות של הכול. זה אחד מ“המשפטים הגדולים” (מהאוואקיה). ההוראה אינה אמונה אלא הכרה שאפשר לבדוק בניסיון.": "In a sentence from the Chāndogya Upaniṣad, a father teaches his son Śvetaketu that his essence is the essence of everything. It is one of the “great sayings” (Mahāvākya). The teaching is not a belief but a recognition that can be tested in experience.", "בנשיפה אמרו אום, בקול או בלב. הרגישו את הרטט בחזה.": "On the exhale say Om, aloud or in your heart. Feel the vibration in your chest.", "בסוף הסבב, נשמו חופשי.": "At the end of the round, breathe freely.", "בסוף השאיפה, החזה העליון עולה בעדינות.": "At the end of the inhale, the upper chest rises gently.", "ברהמן": "Brahman", "ברהמן הוא המציאות הבלתי משתנה שבבסיס כל מה שנראה. טייטיריה אופנישד מתארת אותו כאמת, ידיעה ואינסוף, והמסורת המאוחרת כקיום, מודעות ואושר. הוא לא אל שנמצא מחוץ לעולם אלא עצם הקיום שלו.": "Brahman is the unchanging reality beneath everything that appears. The Taittirīya Upaniṣad describes it as truth, knowledge and infinity, and later tradition as existence, awareness and bliss. It is not a god outside the world but the very existence of it.", "בריהדאראניאקה אופנישד": "Bṛhadāraṇyaka Upaniṣad", "בריהדאראניאקה אופנישד 1.4.10": "Bṛhadāraṇyaka Upaniṣad 1.4.10", "בריהדאראניאקה אופנישד 2.4.5": "Bṛhadāraṇyaka Upaniṣad 2.4.5", "בשינה עמוקה אין רכוש, הישגים או נוחות, ובכל זאת מתעוררים בתחושת שלווה. אדוויתה מסיקה שהאושר אינו בא מהחפצים אלא מהרגע שבו התשוקה נרגעת והמודעות חוזרת לעצמה.": "In deep sleep there are no possessions, achievements or comforts, and yet we wake with a sense of peace. Advaita concludes that happiness does not come from objects but from the moment desire settles and awareness returns to itself.", "ג": "T", "גאיטרי מנטרה": "Gāyatrī Mantra", "גלגלו את הלשון, או הצמידו שיניים.": "Roll the tongue, or press the teeth together.", "גשם": "Rain", "ג׳יוואנמוקטי": "Jīvanmukti", "ג׳יוואנמוקטי הוא מי שהכיר את טבעו האמיתי תוך כדי חיים. הוא ממשיך לאכול, לעבוד ולהרגיש, אך כבר לא מתבלבל בין עצמו לבין ההתנסויות. החיים נמשכים, רק הזהות השתנתה.": "Jīvanmukta is one who has recognized their true nature while alive. They keep eating, working and feeling, but no longer confuse themselves with their experiences. Life goes on; only the identity has changed.", "ג׳ניאנה": "Jñāna", "ד": "W", "דוגמה קלאסית: בדמדומים אדם רואה נחש, ואז מבין שזה חבל. הנחש לא היה שם מעולם, אבל הפחד היה אמיתי. אדוויתה אומרת שהעולם הנפרד והמשתנה נראה כך עד שרואים את מה שמתחתיו.": "A classic example: at dusk a person sees a snake, then realizes it is a rope. The snake was never there, but the fear was real. Advaita says the separate, changing world looks like this until we see what lies beneath it.", "ה": "T", "האגו": "The ego", "האגו הוא הדמות הפנימית שאומרת “אני” ובמשפט הבא כבר מדברת על “שלי”. אדוויתה לא מבקשת להרוג אותו אלא לראות שהוא רעיון בתוך המודעות, כמו דמות בחלום.": "The ego is the inner figure that says “I” and in the next sentence already speaks of “mine.” Advaita does not ask to kill it but to see that it is an idea within awareness, like a character in a dream.", "האם העד נהיה עייף או כועס כשאתה כועס?": "Does the witness become tired or angry when you are angry?", "האת׳ה יוגה פרדיפיקה מונה אותה בין שמונה הנשימות עם החזקה (קומבהקה). המסורת מתארת אותה כמעוררת.": "The Haṭha Yoga Pradīpikā counts it among the eight breaths with retention (kumbhaka). Tradition describes it as stimulating.", "האת׳ה יוגה פרדיפיקה מונה אותה בין שמונה הקומבהקות. המסורת מתארת אותה כמחממת ומעוררת מאוד.": "The Haṭha Yoga Pradīpikā counts it among the eight kumbhakas. Tradition describes it as very warming and stimulating.", "הבא": "Next", "הבטן נעה כמו מפוח.": "The belly moves like a bellows.", "הברה אחת,\nלב שקט.": "One syllable,\nquiet heart.", "הגיע הזמן לתרגל": "Time to practice", "הגיע הזמן לתרגל.": "Time to practice.", "הדבקת תכונות": "Superimposition", "ההברה הראשונית. במנדוקיה אופנישד היא מייצגת את כל מצבי התודעה ואת השקט שאחריהם.": "The primordial syllable. In the Māṇḍūkya Upaniṣad it represents all states of consciousness and the silence that follows them.", "ההוראה האדוויטית מתקדמת בשלושה שלבים: שמיעה של הטקסטים ממורה, הרהור עד שהשאלות נפתרות, והתבוננות עמוקה עד שהידע נעשה חוויה. המדיטציה שלך כאן שייכת לשלב השלישי.": "The Advaita teaching moves in three stages: hearing the texts from a teacher, reflecting until the questions are resolved, and deep contemplation until the knowledge becomes experience. Your meditation here belongs to the third stage.", "הוליכו אותי מהבלתי אמיתי אל האמת, מהחושך אל האור, ממוות אל אלמוות.": "Lead me from the unreal to the real, from darkness to light, from death to immortality.", "הוציאו את הלשון מעט וגלגלו אותה לצינור. מי שלא מצליח: להצמיד שיניים ולשאוף בין השיניים (סיטקארי).": "Stick the tongue out a little and roll it into a tube. If you cannot: press the teeth together and inhale between them (sītkārī).", "החבל והנחש": "The rope and the snake", "החזיקו בנוחות.": "Hold comfortably.", "החזיקו בקצרה.": "Hold briefly.", "החזירו את הלשון, סגרו את הפה והחזיקו בקצרה.": "Return the tongue, close the mouth and hold briefly.", "החזקה": "Hold", "הטיימר מתחיל כשמתחילים לנגן.": "The timer starts when you start playing.", "היסוד האחד": "The one foundation", "הכתפיים והפנים נשארות רפויות.": "The shoulders and face stay relaxed.", "המוזיקה ממשיכה עד שעוצרים אותה.": "The music continues until you stop it.", "המילה פירושה “אי-שניות”. אין כאן ספירה של “אחד”, אלא הכרה שהעצמי הפרטי וברהמן אינם שני דברים נפרדים. את התורה ארגן והפיץ שנקרה, סביב המאה ה-8.": "The word means “non-duality.” This is not a count of “one,” but the recognition that the individual self and Brahman are not two separate things. The teaching was organized and spread by Śaṅkara, around the 8th century.", "המשיכו באותו קצב, בלי מאמץ.": "Continue at the same pace, without effort.", "המשיכו בקצב נוח.": "Continue at a comfortable pace.", "המשיכו בקצב קבוע.": "Continue at a steady pace.", "המשיכו בקצב שוטף וקבוע.": "Continue at a smooth, steady pace.", "המשיכו ברוגע.": "Continue calmly.", "המשיכו כ-20 שניות בקצב של כשתיים בשנייה, ואז נשימה חופשית.": "Continue for about 20 seconds, at roughly two per second, then breathe freely.", "המשיכו לשאוף: הצלעות נפתחות לצדדים, ולבסוף החזה העליון עולה.": "Keep inhaling: the ribs open to the sides, and finally the upper chest rises.", "המשך": "Resume", "הניחו לאום להתמוסס אל תוך השקט.": "Let Om dissolve into the silence.", "הנשימה שקטה ואינה מאומצת.": "The breath is quiet and unstrained.", "הנשימה\nהיא הגשר.": "The breath\nis the bridge.", "הנשיפה הארוכה והרטט משקיטים את הקשב, ולכן התרגול נוח אחרי יום עמוס.": "The long exhale and the vibration quiet the attention, which makes this practice comfortable after a busy day.", "העבירו את תשומת הלב לשוקיים ולברכיים.": "Bring your attention to your shins and knees.", "העד": "The witness", "העד הוא המודעות שרואה את החוויות בלי להשתתף בהן. שמש מאירה בית בלי להיות מושפעת ממה שקורה בו. תרגול העד הוא להבחין: “יש כעס”, “יש מחשבה”, ולשים לב למי שמבחין.": "The witness is the awareness that sees experiences without taking part in them. The sun lights a house without being affected by what happens inside. Practicing the witness means noticing: “there is anger,” “there is a thought,” and noticing who is noticing.", "הפעלת תזכורת": "Turn on reminder", "הצליל מתחיל רק אחרי לחיצה על התחלה. כדאי להנמיך את הווליום ולהתיישב בנוחות.": "The sound starts only after you tap Start. It is a good idea to lower the volume and sit comfortably.", "הצליל נותן למחשבה משהו להיאחז בו, והנשימה מתארכת מעצמה. נפוצה מאוד בתרגול יוגה.": "The sound gives the mind something to hold on to, and the breath lengthens by itself. Very common in yoga practice.", "הקודם": "Previous", "הקלטות": "Recordings", "הקלטות להרגעה ולריכוז.": "Recordings for relaxation and focus.", "הקשיבו לצליל במקום למחשבות.": "Listen to the sound instead of the thoughts.", "הרביעי": "The fourth", "הרגישו את הבטן עולה ויורדת עם הנשימה.": "Feel the belly rising and falling with the breath.", "הרגישו את הקרירות בפה ובגרון.": "Feel the coolness in the mouth and throat.", "הרגישו את הרטט בפנים ובראש.": "Feel the vibration in the face and head.", "הרגישו את השקט שנשאר אחרי הצליל.": "Feel the silence that remains after the sound.", "הרגישו את כל הגוף יחד, נושם בשקט.": "Feel the whole body together, breathing quietly.", "הרגישו את כפות הרגליים. אפשרו להן להישאר כבדות.": "Feel the soles of your feet. Let them stay heavy.", "הרי קרישנה": "Hare Krishna", "הרימו את היד הימנית.": "Raise your right hand.", "הרימו את יד ימין בצורת וישנו מודרה.": "Raise your right hand in Viṣṇu mudrā.", "הרימו את יד ימין: האצבעות המורה והאמצעית מקופלות, האגודל מעל הנחיר הימני והקמיצה מעל השמאלי.": "Raise your right hand: fold the index and middle fingers, with the thumb over the right nostril and the ring finger over the left.", "הרימו יד ימין לצורת וישנו מודרה.": "Raise your right hand into Viṣṇu mudrā.", "הרפו את הירכיים ואת האגן.": "Relax the thighs and the pelvis.", "הרפו את הצוואר, הלסת והלחיים.": "Relax the neck, jaw and cheeks.", "השאיפה מגיעה מעצמה. אל תתאמצו.": "The inhale comes by itself. Do not strain.", "השהיה": "Pause", "השתחוויה לגנשה, מסיר המכשולים.": "Prostration to Ganesha, remover of obstacles.", "השתחוויה לשיווה, הסמל של העצמי הטהור והשקט.": "Prostration to Shiva, the symbol of the pure, silent Self.", "התחילו מהטכניקות הקלות. נשימות מהירות או עם החזקה מתאימות רק למי שבריא, ועדיף ללמוד אותן ממורה. אם מופיעה סחרחורת או אי נוחות, חזרו לנשימה רגילה. האפליקציה אינה תחליף לייעוץ רפואי.": "Start with the easy techniques. Fast breathing or breath holds suit only those in good health, and it is best to learn them from a teacher. If dizziness or discomfort appears, return to normal breathing. This app is not a substitute for medical advice.", "התחלה": "Start", "התרגול הסתיים": "Practice finished", "ו": "F", "ויבקה": "Viveka", "ויבקה היא היכולת להבדיל בין מה שקבוע למה שחולף. זו הראשונה מארבע התכונות שהמסורת דורשת מתלמיד, והיא נבנית בהתבוננות קטנה כל יום, לא ברגע אחד גדול.": "Viveka is the ability to tell what is constant from what passes. It is the first of the four qualities tradition asks of a student, and it is built through a little contemplation each day, not in one great moment.", "ויבקצ׳ודמני, המיוחס לשנקרה": "Vivekacūḍāmaṇi, attributed to Śaṅkara", "ויראגיה": "Vairāgya", "ויראגיה אינה דחיית העולם אלא הפסקת ההישענות על דברים כדי להיות שלמים. אפשר ליהנות מכל דבר בלי להיות תלוי בו. ככל שההיאחזות קטנה, כך השקט יציב יותר.": "Vairāgya is not rejecting the world but ceasing to lean on things in order to feel whole. You can enjoy everything without depending on it. The less the clinging, the steadier the quiet.", "זה אתה": "That is you", "זה אתה.": "That is you.", "זה צליל הרקע של התרגול": "This is the background sound for practice", "זה שלם, וזה שלם. מן השלם עולה השלם, ואם לוקחים שלם מן השלם, נשאר שלם.": "That is whole, and this is whole. From the whole arises the whole, and if you take the whole from the whole, the whole remains.", "זמזום": "Humming", "חוזרים לאט ושמים לב מה עולה.": "Repeat slowly and notice what arises.", "חזרה": "Back", "חזרה על מנטרה עם ספירה.": "Mantra repetition with a counter.", "חזרו בעדינות על סבב נוסף.": "Gently repeat another round.", "חזרו על סבב נוסף בעדינות.": "Repeat another round gently.", "חזרו על סבב נוסף. התחילו בשני או שלושה סבבים בלבד.": "Repeat another round. Start with just two or three rounds.", "חליל במבוק": "Bamboo flute", "חלקי האפליקציה": "App sections", "חמש מעטפות": "Five sheaths", "חמש שניות פנימה, חמש שניות החוצה. קצב קבוע ורגוע.": "Five seconds in, five seconds out. A steady, calm rhythm.", "חקירה עצמית": "Self-inquiry", "טוריה": "Turīya", "טייטיריה אופנישד 2.1": "Taittirīya Upaniṣad 2.1", "טייטיריה אופנישד מתארת את האדם כחמש שכבות, כמו בצל: גוף פיזי, נשימה ואנרגיה, מחשבה ורגש, שכל והבחנה, ואושר. הלימוד הוא לעבור מעטפה אחר מעטפה ולשאול מי מכיר אותה.": "The Taittirīya Upaniṣad describes a person as five layers, like an onion: the physical body, breath and energy, thought and emotion, intellect and discernment, and bliss. The teaching is to go through the sheaths one by one and ask who knows each of them.", "טייטיריה אופנישד, ברהמננדה ואלי": "Taittirīya Upaniṣad, Brahmānanda Valli", "טיימר שינה": "Sleep timer", "טכניקות פראנאיאמה מסורתיות, בקצב שלך.": "Traditional prāṇāyāma techniques, at your own pace.", "ישיבה שקטה": "Silent sitting", "כווצו מעט את הגרון, כמו מי שמכסה מראה בהבל פה, אבל כשהפה סגור.": "Constrict the throat slightly, as if fogging a mirror with your breath, but with the mouth closed.", "כווצו קלות את הגרון, והשאירו את הפה סגור.": "Lightly constrict the throat and keep the mouth closed.", "כיבוי אוטומטי": "Auto-off", "כל הכבוד": "Well done", "כמה דקות של נשימה עושות הבדל.": "A few minutes of breathing make a difference.", "כמה דקות של שקט מחכות לך.": "A few minutes of quiet are waiting for you.", "כמה זמן?": "How long?", "כשהמחשבות נודדות, חזרו להברה אום.": "When thoughts wander, return to the syllable Om.", "כשהמים נרגעים, הירח משתקף בהם בבהירות. כך גם הנפש: לא צריך להפיק את העצמי, צריך להרגיע את המחשבה עד שמה שתמיד נוכח יתגלה. לכן התרגול כאן מתחיל בנשימה.": "When the water settles, the moon is reflected in it clearly. So it is with the mind: you do not need to produce the Self, only calm the thought until what is always present is revealed. That is why practice here begins with the breath.", "כשהנשיפה נגמרת, הקשיבו לשקט.": "When the exhale ends, listen to the silence.", "לא באוויר קר או מזוהם, ולא בזמן הצטננות או שפעת.": "Not in cold or polluted air, and not during a cold or flu.", "לא בהריון, בלחץ דם גבוה, במחלות לב או ריאה, באפילפסיה ולא אחרי אכילה. סחרחורת: הפסיקו. מומלץ ללמוד ממורה.": "Not during pregnancy, with high blood pressure, heart or lung disease, epilepsy, or after eating. Dizziness: stop. It is recommended to learn from a teacher.", "לא בהריון, בלחץ דם גבוה, במחלות לב או ריאה, בבקע, באפילפסיה ולא אחרי אכילה. סחרחורת: הפסיקו מיד. מומלץ ללמוד ממורה.": "Not during pregnancy, with high blood pressure, heart or lung disease, a hernia, epilepsy, or after eating. Dizziness: stop immediately. It is recommended to learn from a teacher.", "לא זה, לא זה": "Not this, not this", "לא מנגן": "Not playing", "לא שניים": "Not two", "להקשיב\nלשקט.": "To listen\nto the quiet.", "להתחיל": "Start", "לוקה סמסתה": "Lokāḥ Samastāḥ", "לילה טוב": "Good night", "לימוד": "Study", "לימוד יומי מתורת האדוויתה וידאנתה.": "A daily lesson from Advaita Vedānta.", "ללא": "Off", "למדתי את השיעור": "I studied the lesson", "לסיום. שולחים טוב לב החוצה.": "For the end of practice. Sending kindness outward.", "לספרייה": "Back to library", "לפי אדוויתה השחרור (מוקשה) אינו הישג שמרוויחים בפעולה, כי העצמי כבר שלם. מה שחסר הוא ידע שמסיר את הבורות (אווידיה). כמו מי ששכח איפה שם את המשקפיים שעל ראשו: אין צורך לחפש, רק לראות.": "According to Advaita, liberation (mokṣa) is not an achievement earned by action, because the Self is already whole. What is missing is knowledge that removes ignorance (avidyā). Like someone who forgot where they put the glasses that are on their head: there is no need to search, only to see.", "מאיה": "Māyā", "מאיפה, בדיוק, עולה תחושת ה“אני”?": "From where, exactly, does the sense of “I” arise?", "מאריכים בנשיפה ומרגישים את הרטט בחזה ובראש.": "Lengthen the exhale and feel the vibration in the chest and head.", "מדיטציית אום": "Om meditation", "מה אתה מחפש בחוץ שאולי כבר נמצא בפנים?": "What are you looking for outside that may already be within?", "מה בחוויה שלך קיים תמיד, גם כשהכול משתנה?": "What in your experience is always present, even when everything changes?", "מה ההבדל בין “אני גדול” לבין “אני אינסופי”?": "What is the difference between “I am big” and “I am infinite”?", "מה הכי מרגיע את המחשבות שלך, ומה מעורר אותן?": "What calms your thoughts the most, and what stirs them up?", "מה מהדברים שדאגת להם היום יהיה חשוב בעוד שנה?": "Which of the things you worried about today will matter in a year?", "מה משתנה אם “זה” בכלל לא רחוק ממך?": "What changes if “this” is not far from you at all?", "מה נשאר כשאתה מסיר מעצמך כל תיאור?": "What remains when you remove every description of yourself?", "מהבריהדאראניאקה אופנישד. טובה לפתיחת היום.": "From the Bṛhadāraṇyaka Upaniṣad. Good for opening the day.", "מוזיקה": "Music", "מוזיקת מדיטציה": "Meditation music", "מונחה": "Guided", "מי הוא המתבונן": "Who is the observer", "מי היה שם גם בחלום וגם בערות?": "Who was there both in the dream and in waking?", "מי מבחין במחשבה שעוברת עכשיו?": "Who notices the thought passing right now?", "מים שקטים": "Still waters", "מיקום בהקלטה": "Position in the recording", "מלמדת להשתמש בסרעפת ומאטה את הנשימה. מתאימה כחימום לשאר הטכניקות.": "Teaches use of the diaphragm and slows the breath. Suitable as a warm-up for the other techniques.", "ממה אתה מצפה שיביא לך שלווה, והאם זה אכן קרה בעבר?": "What do you expect to bring you peace, and has it actually done so in the past?", "מנגן עכשיו": "Now playing", "מנדוקיה אופנישד וגאודפאדה קאריקה": "Māṇḍūkya Upaniṣad and Gauḍapāda Kārikā", "מנדוקיה אופנישד מתארת ערות, חלום ושינה עמוקה. המצבים באים והולכים, אבל המודעות שנוכחת בכולם נקראת טוריה, “הרביעי”. היא לא מצב נוסף אלא הרקע של כל המצבים.": "The Māṇḍūkya Upaniṣad describes waking, dream and deep sleep. The states come and go, but the awareness present in all of them is called turīya, “the fourth.” It is not another state but the background of all states.", "מנטרה בת חמש הברות, קלה לזכירה.": "A five-syllable mantra, easy to remember.", "מנטרה עתיקה מהריג וודה, מסורתית בזריחה.": "An ancient mantra from the Ṛg Veda, traditionally chanted at sunrise.", "מנטרות": "Mantras", "מסורת ההוראה של אדוויתה": "The Advaita teaching tradition", "מפוח": "Bellows", "מקובלת בתחילת מיזם או יום חדש.": "Customary at the start of a new venture or a new day.", "משוחרר בחיים": "Liberated while alive", "משך בדקות": "Duration in minutes", "מתאימה להתבוננות אחרי השיעור היומי.": "Suitable for contemplation after the daily lesson.", "מתאימה לישיבה שקטה, בקצב הנשימה.": "Suitable for silent sitting, at the pace of the breath.", "מתאימה לסיום תרגול.": "Suitable for the end of a practice.", "מתחילים": "Beginner", "מתי בפעם האחרונה הרגשת שלווה בלי שמשהו קרה?": "When did you last feel peace without anything having happened?", "מתי הבחנת היום ב“אני” שמתגונן?": "When did you notice the defensive “I” today?", "מתקדם": "Advanced", "נאדי שודהנה": "Nāḍī śodhana", "נטי נטי": "Neti neti", "נלמד היום": "Studied today", "נשימה לסירוגין בין שני הנחיריים. מאזנת ומשקטת, נפוצה לפני מדיטציה.": "Alternate breathing between the two nostrils. Balancing and calming, common before meditation.", "נשימה מאזנת": "Balanced breathing", "נשימה מרובעת": "Box breathing", "נשימה עם צליל עדין בגרון, כמו גלי ים. מחדדת ריכוז.": "A gentle throat sound, like ocean waves. Sharpens focus.", "נשימה שלמה": "Full breath", "נשימות עוצמתיות": "Powerful breaths", "נשימת 4-7-8": "4-7-8 breathing", "נשימת הדבורה: זמזום ארוך בנשיפה. מרגיעה, מתאימה לסוף היום.": "The bee breath: a long hum on the exhale. Calming, suited to the end of the day.", "נשימת המפוח: שאיפה ונשיפה חזקות ושוות, ואחריהן שאיפה עמוקה והחזקה.": "The bellows breath: strong, even inhales and exhales, followed by a deep inhale and a hold.", "נשיפה": "Exhale", "נשיפה · ימין": "Exhale · right", "נשיפה · שמאל": "Exhale · left", "נשיפה ארוכה שמאטה את הדופק. טובה לפני השינה.": "A long exhale that slows the pulse. Good before sleep.", "נשיפות חדות": "Sharp exhales", "נשיפות קצרות וחדות דרך האף, והשאיפה נעשית מעצמה. מעוררת וממריצה.": "Short, sharp exhales through the nose, with the inhale happening by itself. Stimulating and energizing.", "נשמו חזק ושווה, פנימה והחוצה.": "Breathe strong and even, in and out.", "נשמו שאיפה ונשיפה חזקות, בקצב של כשנייה לנשימה, כ-10 נשימות.": "Take strong inhales and exhales, about one second per breath, around 10 breaths.", "נשפו באותו צליל, ארוך יותר מהשאיפה.": "Exhale with the same sound, longer than the inhale.", "נשפו בחדות דרך האף בכיווץ מהיר של הבטן התחתונה.": "Exhale sharply through the nose by quickly contracting the lower belly.", "נשפו בחדות, והבטן נכנסת פנימה.": "Exhale sharply, and the belly draws in.", "נשפו לאט בסדר הפוך: חזה, צלעות, בטן.": "Exhale slowly in reverse order: chest, ribs, belly.", "נשפו לאט דרך האף.": "Exhale slowly through the nose.", "נשפו לאט והרגישו את החום בגוף.": "Exhale slowly and feel the warmth in the body.", "נשפו לאט: חזה, צלעות, בטן.": "Exhale slowly: chest, ribs, belly.", "נשפו מימין, לאט וברכות.": "Exhale through the right, slowly and gently.", "נשפו משמאל, לאט.": "Exhale through the left, slowly.", "נשפו עם אותו צליל, והאריכו.": "Exhale with the same sound, and lengthen it.", "נשפו עם זמזום נמוך ויציב, והרגישו את הרטט בראש ובפנים.": "Exhale with a low, steady hum, and feel the vibration in the head and face.", "נשפו עם זמזום עמוק כמו דבורה.": "Exhale with a deep hum like a bee.", "סאקשי": "Sākṣī", "סגרו את הימני ושאפו דרך השמאלי.": "Close the right nostril and inhale through the left.", "סגרו את הנחיר הימני ושאפו משמאל.": "Close the right nostril and inhale through the left.", "סגרו את הנחיר השמאלי ושאפו דרך הימני.": "Close the left nostril and inhale through the right.", "סגרו את שני הנחיריים והחזיקו קצר.": "Close both nostrils and hold briefly.", "סגרו את שניהם והחזיקו.": "Close both and hold.", "סגרו שמאל ושאפו מימין.": "Close the left and inhale through the right.", "סגרו שניהם והחזיקו בקצרה.": "Close both and hold briefly.", "סו-הם": "So-ham", "סוג תרגול": "Type of practice", "סוריה בהדנה": "Sūrya bhedana", "סחרחורת? חזרו לנשימה רגילה.": "Dizzy? Return to normal breathing.", "סיום": "End", "סיטאר וטבלה": "Sitar and tabla", "סנטור": "Santoor", "סריקת גוף": "Body scan", "סרנגי": "Sarangi", "עוד משפט גדול, מהבריהדאראניאקה אופנישד. הוא לא אומר שהאגו הוא אלוהים. הוא אומר שהעצמי שמאחורי כל “אני” הוא אותה מציאות אחת, ושהאגו הוא שכבה דקה עליה.": "Another great saying, from the Bṛhadāraṇyaka Upaniṣad. It does not say that the ego is God. It says that the Self behind every “I” is the same one reality, and that the ego is a thin layer over it.", "עוצמה": "Volume", "עוצמת הקול": "Volume level", "על איזה “נחש” בחייך הסתכלת בלי להדליק אור?": "Which “snake” in your life have you looked at without turning on a light?", "עלולה להעלות דופק ולחץ. לא בלחץ דם גבוה, מחלות לב, הריון או חרדה חזקה. לא כדאי לפני שינה.": "May raise pulse and pressure. Not with high blood pressure, heart conditions, pregnancy or strong anxiety. Not advisable before sleep.", "עם כאב או דלקת באוזניים, אל תסגרו את האוזניים. אפשר פשוט לזמזם.": "With ear pain or infection, do not close the ears. You can simply hum.", "עצירה": "Stop", "עצמו עיניים, שפתיים סגורות ושיניים רפויות.": "Close your eyes, lips closed and teeth relaxed.", "עצמו עיניים. שפתיים סגורות, השיניים מעט מופרדות.": "Close your eyes. Lips closed, teeth slightly apart.", "עקבו אחרי העיגול. הוא גדל בשאיפה ומתכווץ בנשיפה.": "Follow the circle. It grows as you inhale and shrinks as you exhale.", "ערב טוב": "Good evening", "פורנמדה": "Pūrṇamadaḥ", "פנצ׳ה קושה": "Pañca kośa", "פעולה בלי תלות בפרי": "Action without attachment to the fruit", "פראנאיאמה": "Prāṇāyāma", "פראנה היא כוח החיים שמגיע עם הנשימה, ואיאמה היא הרחבה והכוונה. בפתנג׳לי יוגה סוטרה (2.49) התרגול מתואר כהפסקת תנועת השאיפה והנשיפה, והמסורת רואה בו הכנה להתבוננות. את הטכניקות המפורטות מתאר טקסט היוגה מימי הביניים, האת׳ה יוגה פרדיפיקה.": "Prāṇa is the life force that arrives with the breath, and āyāma is expansion and direction. In the Patañjali Yoga Sūtra (2.49) the practice is described as the pause in the movement of inhale and exhale, and tradition sees it as preparation for contemplation. The detailed techniques are described in the medieval yoga text, the Haṭha Yoga Pradīpikā.", "פתחו את הימני ונשפו דרכו לאט.": "Open the right and exhale slowly through it.", "פתחו את השמאלי ונשפו דרכו לאט.": "Open the left and exhale slowly through it.", "פתיחת האישה אופנישד. קרובה במיוחד ללימוד אדוויתה.": "The opening of the Īśā Upaniṣad. Especially close to the study of Advaita.", "פתיחת הנגן": "Open player", "צהריים טובים": "Good afternoon", "צליל רקע": "Background sound", "צליל: כבוי": "Sound: off", "צליל: פעיל": "Sound: on", "צעדים קטנים,\nשקט גדול.": "Small steps,\ngreat quiet.", "צ׳נדוגיה אופנישד, פרק 6": "Chāndogya Upaniṣad, chapter 6", "קאפאלבהאטי": "Kapālabhāti", "קארמה יוגה": "Karma yoga", "קבע כצליל רקע לתרגול": "Set as practice background", "קריאה לשמות האל כצורת התמסרות (בהקטי).": "Calling the names of God as a form of devotion (bhakti).", "רגע של שקט, יום בהיר יותר.": "A moment of quiet, a brighter day.", "רוח": "Wind", "רמנה מהרשי (1879–1950) לימד להפנות את השאלה “מי אני?” אל מקור המחשבה. לא מחפשים תשובה במילים אלא מתבוננים מאיפה עולה תחושת ה“אני”. החקירה נגמרת בשקט, לא בנוסחה.": "Ramana Maharshi (1879–1950) taught turning the question “Who am I?” toward the source of thought. You do not look for an answer in words but observe where the sense of “I” arises. The inquiry ends in silence, not in a formula.", "רמנה מהרשי, “מי אני?”": "Ramana Maharshi, “Who Am I?”", "ש": "S", "שאיפה": "Inhale", "שאיפה · ימין": "Inhale · right", "שאיפה · שמאל": "Inhale · left", "שאיפה בנחיר ימין ונשיפה בשמאל. מחממת ומעוררת.": "Inhale through the right nostril and exhale through the left. Warming and stimulating.", "שאיפה בשלושה חלקים: בטן, צלעות, חזה. נקודת פתיחה לכל תרגול.": "A three-part inhale: belly, ribs, chest. A starting point for any practice.", "שאיפה דרך לשון מגולגלת. מצננת ומרגיעה.": "Inhale through a rolled tongue. Cooling and calming.", "שאיפה עמוקה": "Deep inhale", "שאיפה שקטה ואז אום בנשיפה, בקול או בלב. צליל עמוק מלווה את הנשיפה.": "A quiet inhale, then Om on the exhale, aloud or in the heart. A deep sound accompanies the exhale.", "שאפו אוויר קריר דרך הלשון.": "Inhale cool air through the tongue.", "שאפו דרך האף כארבע שניות.": "Inhale through the nose for about four seconds.", "שאפו דרך האף עם צליל רך כמו גל.": "Inhale through the nose with a soft sound like a wave.", "שאפו דרך האף.": "Inhale through the nose.", "שאפו דרך האף. קודם הבטן מתרחבת.": "Inhale through the nose. The belly expands first.", "שאפו דרך הימני, החזיקו, ונשפו דרך השמאלי. זה סבב אחד.": "Inhale through the right, hold, and exhale through the left. That is one round.", "שאפו דרך הצינור, כמו דרך קשית.": "Inhale through the tube, as if through a straw.", "שאפו לאט דרך האף.": "Inhale slowly through the nose.", "שאפו מימין, החזיקו ונשפו משמאל.": "Inhale through the right, hold and exhale through the left.", "שאפו עם צליל של גל שמתקרב.": "Inhale with the sound of an approaching wave.", "שאפו עמוק, החזיקו בנוחות ונשפו לאט.": "Inhale deeply, hold comfortably and exhale slowly.", "שאפו, והרגישו את הבטן מתרחבת ראשונה.": "Inhale, and feel the belly expand first.", "שבו או שכבו בנוחות, ועצמו את העיניים.": "Sit or lie down comfortably, and close your eyes.", "שבו בנוחות ועצמו את העיניים.": "Sit comfortably and close your eyes.", "שבו בשקט. כשהמחשבות נודדות, חזרו לנשימה.": "Sit quietly. When thoughts wander, return to the breath.", "שבו זקוף ושאפו עמוק.": "Sit upright and inhale deeply.", "שבו זקוף, והניחו את הידיים על הברכיים.": "Sit upright, and place your hands on your knees.", "שבו זקוף, והניחו יד על הבטן התחתונה.": "Sit upright, and place a hand on your lower belly.", "שבו זקוף, והניחו יד על הבטן ויד על החזה.": "Sit upright, and place one hand on your belly and one on your chest.", "שבו זקוף. הרחיבו ושחררו את הבטן בכל נשימה, כמו מפוח.": "Sit upright. Expand and release the belly with every breath, like a bellows.", "שבו זקוף. יד אחת על הבטן ויד אחת על החזה.": "Sit upright. One hand on the belly and one on the chest.", "שחרור דרך ידע": "Liberation through knowledge", "שחררו את החזה, את הכתפיים ואת הזרועות.": "Release the chest, the shoulders and the arms.", "שחררו את הכתפיים והלסת.": "Release the shoulders and the jaw.", "שחררו את הכתפיים.": "Release the shoulders.", "שיהיו כל היצורים בכל העולמות מאושרים ושלווים.": "May all beings in all worlds be happy and peaceful.", "שיטאלי": "Śītalī", "שיטת השלילה מהבריהדאראניאקה אופנישד: מסירים את מה שאינו העצמי. אני לא הגוף, לא התחושה, לא המחשבה. מה שנשאר אחרי שהכול נשלל הוא המודעות עצמה, שאי אפשר לשלול כי היא זו ששוללת.": "The method of negation from the Bṛhadāraṇyaka Upaniṣad: remove what is not the Self. I am not the body, not the sensation, not the thought. What remains after everything has been negated is awareness itself, which cannot be negated because it is what negates.", "שימו לב לחום שעולה בגוף.": "Notice the warmth rising in the body.", "שיעור קטן,\nמחשבה גדולה.": "A small lesson,\na big thought.", "שלום": "Peace", "שלום, שלוש פעמים: שלום פנימי, שלום בסביבה ושלום מעבר לשליטתנו.": "Peace, three times: peace within, peace in the surroundings and peace beyond our control.", "שלושה שלבי לימוד": "Three stages of study", "שמרו על הפנים רפויות.": "Keep the face relaxed.", "שמרו על פנים, לסת וכתפיים רפויים.": "Keep the face, jaw and shoulders relaxed.", "שנטי": "Śānti", "שנקרה, אפדשסהסרי": "Śaṅkara, Upadeśasāhasrī", "שנקרה, מבוא לברהמה-סוטרה בהאשיה": "Śaṅkara, Introduction to the Brahma Sūtra Bhāṣya", "שנקרה, פירושים לברהמה-סוטרה": "Śaṅkara, Commentaries on the Brahma Sūtra", "שעת התזכורת": "Reminder time", "שקט": "Quiet", "שרוונה, מנאנה, נידידיאסנה": "Śravaṇa · Manana · Nididhyāsana", "שרים בקצב שווה, אפשר בקול.": "Chant at an even pace, aloud if you like.", "תזכורת יומית": "Daily reminder", "תרגול": "Practice", "תשומת לב עוברת לאט מהרגליים עד הראש.": "Attention moves slowly from the feet to the head.", "תת תוואם אסי": "Tat tvam asi", "התבוננות": "Contemplation", "הגדרות": "Settings", "מראה": "Appearance", "אוטומטי": "Auto", "בהיר": "Light", "כהה": "Dark", "ערכת נושא": "Theme", "בחרו נוף": "Choose a landscape", "שפה": "Language", "החלפת השפה טוענת את האפליקציה מחדש.": "Changing the language reloads the app.", "במבוק": "Bamboo", "הרים": "Mountains", "ים": "Sea", "מדבר": "Desert", "שקיעה": "Sunset", "השירים שלי": "My songs", "הוספת שירים": "Add songs", "מחיקת השיר": "Delete song", "השיר שלי": "My song", "בחרו קבצי שמע מהמכשיר. הם נשמרים באפליקציה.": "Choose audio files from your device. They are kept in the app.", "השירים יישמרו רק עד סגירת הדף.": "Songs will be kept only until the page is closed.", "לא נמצאו קבצי שמע.": "No audio files found.", "הגדרות האפליקציה": "App settings", "התראה בטלפון": "phone notification"};
+  var HEB = /[֐-׿]/;
+  var RULES = [
+    [/^(\d+) דק׳$/, function (m) { return m[1] + ' min'; }],
+    [/^התחלת תרגול · (\d+) דק׳$/, function (m) { return 'Start practice · ' + m[1] + ' min'; }],
+    [/^שיעור (\d+) מתוך (\d+)( · היום)?$/, function (m) { return 'Lesson ' + m[1] + ' of ' + m[2] + (m[3] ? ' · Today' : ''); }],
+    [/^מתוך (\d+)$/, function (m) { return 'of ' + m[1]; }],
+    [/^סבבים שהושלמו: (\d+)$/, function (m) { return 'Rounds completed: ' + m[1]; }],
+    [/^כיבוי אוטומטי בעוד (.+)$/, function (m) { return 'Auto-off in ' + m[1]; }],
+    [/^מקור: ([\s\S]+)$/, function (m) { return 'Source: ' + T(m[1]); }],
+    [/^תרגול ([\s\S]+) הסתיים\. קחו רגע לפני שחוזרים\.$/, function (m) { return 'Practice ' + T(m[1]) + ' finished. Take a moment before you return.'; }],
+    [/^התזכורת תופיע בשעה (\S+) כשהדף פתוח\. כדי לקבל התראה גם כשהוא סגור, אפשר להגדיר אותה כהתראה בטלפון\.$/, function (m) { return 'The reminder will appear at ' + m[1] + ' while the page is open. To be notified even when it is closed, set it up as a phone notification.'; }]
+  ];
+  function T(t) {
+    if (Object.prototype.hasOwnProperty.call(EN, t)) return EN[t];
+    for (var i = 0; i < RULES.length; i++) { var m = RULES[i][0].exec(t); if (m) return RULES[i][1](m); }
+    return t;
+  }
+  function trText(v) {
+    if (!HEB.test(v)) return v;
+    var m = /^(\s*)([\s\S]*?)(\s*)$/.exec(v);
+    return m[1] + T(m[2]) + m[3];
+  }
+  function trAttrs(el) {
+    ['aria-label', 'title'].forEach(function (a) {
+      var v = el.getAttribute && el.getAttribute(a);
+      if (v && HEB.test(v)) { var t = trText(v); if (t !== v) el.setAttribute(a, t); }
+    });
+  }
+  function xlate(root) {
+    if (!root) return;
+    if (root.nodeType === 3) {
+      var p = root.parentNode;
+      if (p && (p.nodeName === 'SCRIPT' || p.nodeName === 'STYLE')) return;
+      var v = root.nodeValue; if (HEB.test(v)) { var t = trText(v); if (t !== v) root.nodeValue = t; }
+      return;
+    }
+    if (root.nodeType !== 1 || root.nodeName === 'SCRIPT' || root.nodeName === 'STYLE') return;
+    trAttrs(root);
+    var w = document.createTreeWalker(root, 5, null), n;
+    while ((n = w.nextNode())) {
+      if (n.nodeType === 3) {
+        var pn = n.parentNode.nodeName;
+        if (pn === 'SCRIPT' || pn === 'STYLE') continue;
+        var nv = n.nodeValue; if (HEB.test(nv)) { var nt = trText(nv); if (nt !== nv) n.nodeValue = nt; }
+      } else trAttrs(n);
+    }
+  }
+  function initLang() {
+    if (state.lang !== 'en') return;
+    document.title = T(document.title);
+    xlate(document.body);
+    try {
+      new MutationObserver(function (list) {
+        list.forEach(function (m) {
+          if (m.type === 'childList') m.addedNodes.forEach(xlate);
+          else if (m.type === 'characterData') xlate(m.target);
+          else trAttrs(m.target);
+        });
+      }).observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['aria-label', 'title'] });
+    } catch (e) {}
+  }
 
   renderStudy();
   renderMantras();
@@ -1812,6 +2106,7 @@ section { margin-bottom: 26px; }
   document.addEventListener('visibilitychange', checkRemind);
   checkRemind();
   renderHome();
+  initLang();
 })();
 </script>
 </body>
